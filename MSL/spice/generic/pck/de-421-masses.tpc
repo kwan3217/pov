@@ -1,0 +1,65 @@
+KPL/PCK
+
+This file was produced by Chris Jeppesen on June 15, based on de421_announcement.pdf and 
+ftp://ssd.jpl.nasa.gov/pub/eph/planets/ascii/de421/header.421.
+
+The masses for the sun and barycenter given in this file are 
+derived from the masses used for the integration of the planetary
+ephemerides DE-421. The value of the AU given in this ephemeris is.
+
+    AU = 149597870.699626 km
+	 
+In the ephemeris the values of the masses are given as ratios to
+of Solar GM to barycenter GM.  These values are given here. (Body3 is Earth-moon system)
+
+	BODY1_GMSUN/GM  =   6023597.400017
+	BODY2_GMSUN/GM  =    408523.718655
+	BODY3_GMSUN/GM  =    328900.559150
+	BODY4_GMSUN/GM  =   3098703.590267
+	BODY5_GMSUN/GM  =      1047.348625
+	BODY6_GMSUN/GM  =      3497.901768
+	BODY7_GMSUN/GM  =     22902.981613
+	BODY8_GMSUN/GM  =     19412.237346
+	BODY9_GMSUN/GM  = 135836683.767599
+	
+Earth/moon mass ratio is: 81.3005690699153
+
+These values are the ones that are used in the integration
+of DE-421 and are used by other products that use DE-421 to
+provide gravitational force models for integration of
+trajectories.
+
+
+\begindata
+
+AU         =      149597870.699626 
+
+BODY1_GM   =          22032.090
+BODY2_GM   =         324858.592
+BODY3_GM   =         403503.236310
+BODY4_GM   =          42828.375214
+BODY5_GM   =      126712764.800
+BODY6_GM   =       37940585.200
+BODY7_GM   =        5794548.600
+BODY8_GM   =        6836535.000
+BODY9_GM   =            977.000
+BODY10_GM  =   132712440040.944
+
+\begintext
+
+The masses of bodies other than the earth and moon are
+simply taken to be the masses of the barycenters given above.
+The masses of the earth and moon are taken from DE-421.
+
+\begindata
+
+BODY199_GM   =          22032.090000
+BODY299_GM   =         324858.592000
+BODY301_GM   =           4902.800076
+BODY399_GM   =         398600.436233
+BODY499_GM   =          42828.375214
+BODY599_GM   =      126712764.800000
+BODY699_GM   =       37940585.200000
+BODY799_GM   =        5794548.600000
+BODY899_GM   =        6836535.000000
+BODY999_GM   =            977.000000

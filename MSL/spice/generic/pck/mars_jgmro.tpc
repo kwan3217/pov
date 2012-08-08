@@ -1,0 +1,41 @@
+KPL/PCK
+
+Data from JPL Mars gravity field MRO110B2, a 110 degree and order spherical 
+harmonic field. See 
+
+http://pds-geosciences.wustl.edu/mro/mro-m-rss-5-sdp-v1/mrors_1xxx/data/shadr/jgmro_110b2_sha.lbl
+
+for description. In particular, the distance unit used is the kilometer, so mu is all in km^3/s^2
+
+This data is almost consistent with the DE421 value of mu for Mars. In particular, this data shows
+Mars as being ever so slightly lighter than in DE421. (42828.375214 for BODY4_GM) As such, I have
+no problem with covering up the DE421 data.
+
+\begindata
+
+BODY4_GM = 42828.3745268
+BODY401_GM = 7.17e-4
+BODY402_GM = 9.43e-5
+BODY499_GM = 42828.373716
+
+\begintext
+
+Use BODY4 when in interplanetary space, and BODY499 when near the planet (inside the orbits of the moons)
+
+The planetary radius used with this model is 3396km exactly. pck00010 has 3396.19km for an equatorial radius.
+
+\begindata
+        
+BODY499_RADII       = ( 3396.00   3396.00   3376.20 )
+
+\begintext
+
+The gravity field constants are fully normalized, so we will un-normalize here to get J2 instead of Cbar20
+
+\begindata
+
+BODY499_J2 = 1.95660861323542e-3
+
+             
+
+
