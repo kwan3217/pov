@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dvdstyler jumppad="1" emptyMenu="1">
+  <vmgm>
+    <menus/>
+  </vmgm>
+  <titleset>
+    <menus>
+      <pgc>
+        <spumux>
+          <menu videoFormat="NTSC" bgColour="#000000">
+            <image x="0" y="0">
+              <filename>/usr/codebase/pov/Pegasus/PegasusChase1080.png</filename>
+            </image>
+            <button x="56" y="56">
+              <action pgci="3" chapter="0"/>
+              <type>/usr/share/dvdstyler/buttons/simple.xml</type>
+              <text>AIM PegasusXL Launch Simulation</text>
+              <text_font>26;77;90;90;0;URW Palladio L</text_font>
+              <text_colour>
+                <normal>#ffffff</normal>
+                <highlighted>#0000ff</highlighted>
+                <selected>#ff0000</selected>
+              </text_colour>
+              <bgcolour>
+                <normal></normal>
+                <highlighted></highlighted>
+                <selected></selected>
+              </bgcolour>
+              <direction>
+                <left>-1</left>
+                <right>-1</right>
+                <up>-1</up>
+                <down>-1</down>
+              </direction>
+            </button>
+          </menu>
+        </spumux>
+        <vob file="" pause="inf"/>
+        <pre>jump title 2;</pre>
+      </pgc>
+    </menus>
+    <titles>
+      <pgc>
+        <vob file="/usr/codebase/pov/kwanmercury.mpg" chapters="15:00,30:00,45:00,1:00:00"/>
+        <post>call vmgm menu 1;</post>
+      </pgc>
+      <pgc>
+        <vob file="/usr/codebase/pov/Pegasus/PegasusChase6C.mpg" chapters="15:00,30:00,45:00,1:00:00"/>
+        <post>call vmgm menu 1;</post>
+      </pgc>
+    </titles>
+  </titleset>
+</dvdstyler>

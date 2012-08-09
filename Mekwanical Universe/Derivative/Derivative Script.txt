@@ -1,0 +1,65 @@
+Scene: Highest level part
+Shot: Something that can be run with one clock
+
+
+0) Title card
+Derivatives
+(c) 2010 Kwan Heavy Industries
+
+1) Slope
+*Demonstrate slope: Steep and shallow straight line
+*Calculate slope: Rise over run
+*Demonstrate grade (slope in percent) and roof pitch (rise per 12 inch run)
+"Here is a straight line in two-dimensional space. How can we tell how steep it is?"
+"One way is to measure the angle with a protractor."
+"A line which is perfectly horizontal has an angle of 0&deg;"
+"One which goes up as you go right has a positive angle..."
+"...and one which goes down as you go right has a negative angle"
+"We can go all the way to vertical at 90&deg;..."
+"...but the line is the same as the one at -90&deg;"
+"Any line has an angle between -90 and +90."
+"While this will work, there is a way to measure its steepness"
+"with only a ruler. This can be a lot more convenient for some purposes."
+"We measure a certain distance from the line directly to the right. This is the ''run''."
+"We then measure straight up or down. This is the ''rise''."
+"Now we divide rise by run and call this the ''slope.''"
+"Since the line is straight, it doesn't matter where we do this, the slope is the same everywhere."
+"You can choose any run you want, but once you do, the steepness of the line determines the rise and the slope."
+"The problem with slope is that no matter how high the slope number is..."
+"...we can't reach vertical, since there is a horizontal run."
+
+2) Applications of Slope
+"You may have seen a highway sign marked "5% grade". This means that the rise is 5% of the run."
+"It doesn't look very steep here, but it does when you are in a big truck burning your brakes."
+*Switchback
+"The ''pitch'' of a roof is how steep it is. It is customarily measured in rise per 12 inches"
+*Slope is Speed
+
+3) Slope on a curve
+*Use a parabola
+*Secant and tangent line - derivative at one point
+
+4) Formula for derivative
+*Left side, curve with secant line marked
+*Right side, formula with numbers
+*Show DeltaX shrink to dx and see what happens
+
+5) Derivative is an operator
+*This operator takes a function and returns a new function
+*Show a function and its derivative up-and-down
+
+6) Higher derivatives - Position, velocity, acceleration
+
+7) Derivative rules and numerical derivative
+
+8) Antiderivative
+
+Calculate clocks
+*POV-ray clock is normalized
+*Time is always available in seconds, frames, normalized
+*Time is available from three epochs, beginning of video, scene, shot
+*Nine clocks available
+*All clocks are global variables
+*Video and scene clocks calculated in main loop
+*Shot clocks are calculated in scene
+

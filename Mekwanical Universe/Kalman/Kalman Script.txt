@@ -1,0 +1,46 @@
+Scene: Highest level part
+Shot: Something that can be run with one clock
+
+
+0) Title card
+Kalman Filter
+(c) 2011 Kwan Heavy Industries
+
+1) Random Variables
+*Show a discrete random variable (dice) and a continuous one (spinner)
+*Gaussian 1D distribution - bell curve
+*Show a vector random variable (dart board)
+*Gaussian nD distribution - probability ellipsoid
+
+2) State Vector
+*Example - Spring-mass combination
+"This is a bobbing mass on a rubber band. It has been pulled from its equilibrium state and then allowed to bounce freely up and down.
+Here we have one of the more studied and simple systems in Physics - the simple harmonic oscillator. Since we are in physics land, we
+can talk about point masses, ideal springs, frictionless conditions, and so on. We shall invoke all of these at this point so that
+we can concentrate on the problem at hand. This system will continue to oscillate forever, at the same amplitude, until disturbed."
+"We can produce a graph of its motion versus time, as shown here. The vertical axis represents space, to be specific the displacement
+of the bob from its equilibrium point. The horizontal axis represents time. We see that the motion generates a smooth sine wave."
+"Here is another system, which is bouncing farther than the first."
+"And here is it's graph"
+"Let's freeze them at a particular moment in time"
+
+*Matrix Transformation
+*State Transition Matrix
+*Effect on state
+*Effect on probability ellipsoid
+*Process noise
+
+3) Estimation
+
+4) Time update
+*Show the estimate with the covariance ellipsoid around it
+*Transform the estimate
+*Move the ellipsoid to the origin, transform it, add process noise, then move it back
+
+5) Measurement update
+*Measurement space - perhaps different dimension from state space
+*Measurement matrix - transforms a state into a measurement
+*Linear filter - Gain matrix
+*Measurement innovation
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE QDVDAuthor>
+<QDVDProject ProjectName="Unnamed" >
+ <DVDAuthor>
+  <XMLVersion>0.1.0</XMLVersion>
+  <CurrentPath>/custom/usr/codebase/pov/Pegasus</CurrentPath>
+  <TempPath>/tmp</TempPath>
+  <ProjectPath>/tmp/Unnamed/image</ProjectPath>
+  <SourceEntry Pause="0" DisplayName="[01] - out" >
+   <SourceInfo Pause="0" Size="165.477MB" Format="ntsc" Titleset="-1" Ratio="4:3" FPS="23.9744" Length="00:02:18" Resolution="720x480" Status="Ok" >
+    <File>/custom/usr/codebase/pov/Pegasus/out.mpg</File>
+    <Properties Pause="0" />
+   </SourceInfo>
+  </SourceEntry>
+ </DVDAuthor>
+ <MainVMGM MenuWidth="720" MenuHeight="480" MenuFormat="1" MenuRatio="4:3" >
+  <MenuVariables>
+   <MenuBackround TitlesetNr="0" MenuNr="0" />
+   <MenuOffset>00:00:00.000</MenuOffset>
+   <MenuDuration>00:00:01.000</MenuDuration>
+   <MenuBackround ResizeAlgo="Normal Qt" OffsetX="0" OffsetY="0" StretchType="0" >/custom/usr/codebase/pov/Pegasus/PegasusChase1080.png</MenuBackround>
+   <MenuName>Main Menu VMGM</MenuName>
+   <MaskColors>#fefffe,#fa9632,#ff1414,#ffff14,</MaskColors>
+  </MenuVariables>
+  <PreviewVariables>
+   <TextObject TextAlign="1,64" ForegroundColor="#ffffff" Font="Helvetica,24,-1,5,50,0,0,0,0,0" Text="AIM Pegasus XL Launch Simulation
+16 April 2006" >
+    <MenuObject Width="686" X="16" Y="18" Height="86" ObjectName="AIM Pegasus XL Launch Simulation
+16 April 2006" />
+   </TextObject>
+  </PreviewVariables>
+ </MainVMGM>
+</QDVDProject>
