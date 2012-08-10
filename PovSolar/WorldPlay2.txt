@@ -1,0 +1,35 @@
+
+WorldPlay.pov Statistics, Resolution 1600 x 1200
+----------------------------------------------------------------------------
+Pixels:         1922505   Samples:         2435636   Smpls/Pxl: 1.27
+Rays:           4216769   Saved:             50137   Max Level: 5/5
+----------------------------------------------------------------------------
+Ray->Shape Intersection          Tests       Succeeded  Percentage
+----------------------------------------------------------------------------
+Cone/Cylinder                 12245767           73712      0.60
+Disc                         656898382        13761915      2.09
+Mesh                          54140194         1939627      3.58
+Plane                         86205534         3420416      3.97
+Sphere                        83593601        22927016     27.43
+Torus                           715481           97930     13.69
+Torus Bound                     715481          114463     16.00
+Bounding Box                2466121571      1427812984     57.90
+Vista Buffer                  43795862        36538279     83.43
+----------------------------------------------------------------------------
+Roots tested:               114463   eliminated:               75618
+Calls to Noise:                  0   Calls to DNoise:       50819212
+----------------------------------------------------------------------------
+Shadow Ray Tests:        152026343   Succeeded:             19522882
+Reflected Rays:             177338
+Transmitted Rays:          1077108
+----------------------------------------------------------------------------
+Radiosity samples calculated:       7134 (0.22 percent)
+Radiosity samples reused:        3249650
+----------------------------------------------------------------------------
+Smallest Alloc:                 10 bytes   Largest:          5302008
+Peak memory used:        152473385 bytes
+----------------------------------------------------------------------------
+Time For Parse:    0 hours  0 minutes  25.0 seconds (25 seconds)
+Time For Trace:    0 hours 24 minutes  17.0 seconds (1457 seconds)
+    Total Time:    0 hours 24 minutes  42.0 seconds (1482 seconds)
+Total cache size: 20380
