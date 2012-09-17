@@ -7,9 +7,9 @@
 
 //Data from od137 entry simulation. This is the 
 //only one with a matching C kernel.
-#furnsh "generic.tm"
-#furnsh "relay.tm"
-#furnsh "msl_od137.tm"
+#furnsh "generic/generic.tm"
+#furnsh "MSL/relay.tm"
+#furnsh "MSL/msl_od137.tm"
 
 #declare fps=24;
 #declare DT=1/fps;
@@ -503,7 +503,7 @@ PrintNumber("SkyLength: ",SkyLength)
 PrintNumber("SkyWidth: ",SkyWidth)
 #declare PhoenixSky=<187,136,115>/255;
 PrintNumber("hypot(SkyLength,SkyWidth): ",sqrt(SkyLength*SkyLength+SkyWidth*SkyWidth))
-#if(TTT<(Tland+3))
+#if(TTT<(Tland+13))
 cone {
   0,0,L(TTT)*cos(HorizonAngle),sin(HorizonAngle)
   open
@@ -552,7 +552,7 @@ background {color rgb LayerColor}
 #declare CameraLocD=(cos(CameraHdgD)*No(TTT)+sin(CameraHdgD)*Ea(TTT))*NoDist+L(TTT)*2-vnormalize(V(TTT))*ADist-L(TTT)*(RappelDist+0)/2;
 #declare CameraLookD=-vnormalize(V(TTT))*ADist-L(TTT)*(RappelDist+0)/2;
 
-#declare CameraLocL=BLinterp(exp(0),CameraLocD,exp(10),MRO(TTT),exp(TTT-(Tland+2)));
+#declare CameraLocL=BLinterp(exp(0),CameraLocD,exp(30),MRO(TTT),exp(TTT-(Tland+6)));
 
 #switch(TTT)
   #range(-999,Tebm0-7) 
