@@ -1,4 +1,4 @@
-#include "PovSolar/Math.inc"
+#include "KwanMath.inc"
 
 #local N=16;
 #local W="/h>m8X=X7KJXFXWhjhKMa$Q$AD390$&<";
