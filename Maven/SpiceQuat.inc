@@ -1,3 +1,11 @@
+#version unofficial Megapov 1.22;
+
+global_settings {right_handed}
+
+#macro QuatConj(Q)
+  (<-Q.x,-Q.y,-Q.z,Q.t>)
+#end
+
 #macro QuatMult(Q1,Q2)
   #local v1=<Q1.x,Q1.y,Q1.z>;
   #local r1=Q1.t;
@@ -12,7 +20,7 @@
   //Given a quaternion from a certain frame to another frame, and
   //a vector in the from frame, calculate the vector in the to frame
   #local Q1=QuatMult(Q,<V.x,V.y,V.z,0>);
-  #local Q2=QuatMult(Q1,<-Q.x,-Q.y,-Q.z,Q.t>);
+  #local Q2=QuatMult(Q1,QuatConj(Q));
   (<Q2.x,Q2.y,Q2.z>)
 #end
 
