@@ -7,4 +7,5 @@ Memory.Log
 *.log
 Frames
 *.png
+ffmpeg2pass*
 
