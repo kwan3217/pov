@@ -91,9 +91,6 @@
   pigment {color rgb <1,1,0.5>}
 }
                                 
-#declare TAcc0=Tinflate-2;                                
-#declare Acc0=vlength(A(TAcc0));
-
 #declare Vst=50; //m/s, line stretch speed
 #declare Lp=sqrt(Rp*Rp+Hp*Hp);
 #declare Afcrit=1.05;
@@ -103,9 +100,13 @@
 #declare Hcrit=sqrt(Lp*Lp-Rcrit*Rcrit);
 #declare Hmax=(Hbr+Hr+Hs+Hb+Hg+Lp);
 #declare Tst=Hmax/Vst;
-#declare Tp=Tinflate-Tst;
+#declare Tp=Tdeploy;
+#declare Tinflate=Tdeploy+Tst;
 #declare TI1=Tinflate;
 #declare TI2=Tinflate+2;
+
+#declare TAcc0=Tinflate-2;                                
+#declare Acc0=vlength(A(TAcc0));
 
 #macro MSLChuteAf(TT) 
   #switch(TT)

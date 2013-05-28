@@ -232,11 +232,16 @@
 
 #macro TPIR(Table,X)
   #local I=0;
+//  PrintNumber("X: ",X)
+//  PrintNumber("dimension_size(Table,1): ",dimension_size(Table,1))
   #while((I<dimension_size(Table,1)-1) & (X>Table[I+1]))
+//    PrintNumber("I: ",I)
+//    PrintNumber("Table[I+1]: ",Table[I+1])
     #local I=I+1;
   #end
   (I)
 #end
+
 
 #macro Tableterp(TableX,TableY,X)
   #local I=TPIR(TableX,X);

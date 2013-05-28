@@ -1,7 +1,7 @@
 #declare MDescentFuel=390; //kg
 #declare MDescentDry=829;  //kg
 #declare VeMLE=2200;       //m/s
-#declare MRover=899;       //m/s
+#declare MRover=899;       //kg
 #declare Tstep=Tsep+1;
 #declare FMLE=3000;        //N at 100% thrust, each MLE
 #declare Throttle=0;

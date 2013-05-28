@@ -101,6 +101,7 @@
 //return: Pressure in Pa
 #macro MarsAtmP(Alt_)
   #local Alt=Alt_/1000; //meters to km
+//  PrintNumber("AltP (km): ",Alt)
   #local result=(pow(10,Tableterp(MarsAtmAltTable,MarsAtmlnPTable,Alt)));
 //  PrintNumber(concat("MarsAtmP(",str(Alt,0,6),"): "),result)
   (result)
@@ -110,6 +111,7 @@
 //return: density in kg/m^3
 #macro MarsAtmRho(Alt_)
   #local Alt=Alt_/1000; //meters to km
+//  PrintNumber("AltRho (km): ",Alt)
   #local result=(pow(10,Tableterp(MarsAtmAltTable,MarsAtmlnRhoTable,Alt))*1000);
 //  PrintNumber(concat("MarsAtmRho(",str(Alt,0,6),"): "),result)
   (result)
@@ -118,6 +120,7 @@
 //input: altitude in meters above areoid (ellipsoid if necessary)
 //return: speed of sound in m/s
 #macro MarsAtmCsound(Alt_)
+//  PrintNumber("AltCsound (m): ",Alt_)
   #local result=(sqrt(1.29*MarsAtmP(Alt_)/MarsAtmRho(Alt_)));
 //  PrintNumber(concat("MarsAtmCsound(",str(Alt_,0,6),"): "),result)
   (result)

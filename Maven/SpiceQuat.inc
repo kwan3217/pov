@@ -16,16 +16,20 @@ global_settings {right_handed}
   (<vv.x,vv.y,vv.z,r>)
 #end
 
-#macro QuatVectRotate(Q,V)
-  //Given a quaternion from a certain frame to another frame, and
-  //a vector in the from frame, calculate the vector in the to frame
-  #local Q1=QuatMult(Q,<V.x,V.y,V.z,0>);
-  #local Q2=QuatMult(Q1,QuatConj(Q));
-  (<Q2.x,Q2.y,Q2.z>)
-#end
-
 #macro qlength(Q)
   (sqrt(Q.x*Q.x+Q.y*Q.y+Q.z*Q.z+Q.t*Q.t))
+#end
+
+#macro QuatVectRotate(Q,V)
+  #if(qlength(Q)>0)
+    //Given a quaternion from a certain frame to another frame, and
+    //a vector in the from frame, calculate the vector in the to frame
+    #local Q1=QuatMult(Q,<V.x,V.y,V.z,0>);
+    #local Q2=QuatMult(Q1,QuatConj(Q));
+    (<Q2.x,Q2.y,Q2.z>)
+  #else
+    (V)
+  #end
 #end
 
 #macro PrintQuat(Label,Q) 
@@ -56,6 +60,17 @@ global_settings {right_handed}
 //          2*(q1*q3-q0*q2)    ,2*(q2*q3+q0*q1),1-2*(q1*q1+q2*q2),
 //          T.x              ,T.y              ,T.z>
 #end
+
+#macro PrintQuatAsMatx(Label,Q)
+  #local q0=Q.t;
+  #local q1=Q.x;
+  #local q2=Q.y;
+  #local q3=Q.z; 
+  PrintVector(Label,<1-2*(q2*q2+q3*q3),2*(q1*q2+q0*q3)  ,2*(q1*q3-q0*q2)>)
+  PrintVector(Label,<2*(q1*q2-q0*q3)  ,1-2*(q1*q1+q3*q3),2*(q2*q3+q0*q1)>)
+  PrintVector(Label,<2*(q1*q3+q0*q2)  ,2*(q2*q3-q0*q1)  ,1-2*(q1*q1+q2*q2)>)
+#end
+
 /*
 //Quaternion test cases
 #debug "Quaternion basis vectors: \n"
