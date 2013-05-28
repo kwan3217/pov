@@ -39,8 +39,8 @@ $(FRAMEDIR):
 	mkdir $(FRAMEDIR)
 
 LaspTag1.mp4: $(SOFTS) f2_44100.ogg
-	ffmpeg -r 24 -f image2 -i Soft/lasp%03d.png -i f2_44100.ogg -b 4000k -ab 128k -strict experimental -pass 1 -y LaspTag1.mp4
-	ffmpeg -r 24 -f image2 -i Soft/lasp%03d.png -i f2_44100.ogg -b 4000k -ab 128k -strict experimental -pass 2 -y LaspTag1.mp4
+	ffmpeg -r 24 -f image2 -i Soft/lasp%03d.png -i f2_44100.ogg -vb 4000k -ab 128k -strict experimental -pass 1 -y LaspTag1.mp4
+	ffmpeg -r 24 -f image2 -i Soft/lasp%03d.png -i f2_44100.ogg -vb 4000k -ab 128k -strict experimental -pass 2 -y LaspTag1.mp4
 	$(RM) ffmpeg2pass-0.log
 
 clean:
