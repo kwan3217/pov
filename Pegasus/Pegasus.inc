@@ -344,7 +344,7 @@
         LogoSame ("AimLogo",             1265, 922,60, 440,  0) 
         LogoSame ("svg/Hampton",         1000,1000,26, 377, 15)
         LogoSame ("svg/NewLASPLogoFull", 1400, 456,34, 373,-10)
-        LogoSame ("svg/ATKFlight",       1000, 377,60, 530,  0)
+        LogoSame ("svg/ATKBlue",       1000, 377,60, 530,  0)
         LogoSame ("svg/VTRibbon",         761,1098,30, 830, 40)
         LogoSame ("svg/NASA Meatball",   1584,1280,60, 920,  0)
       #end

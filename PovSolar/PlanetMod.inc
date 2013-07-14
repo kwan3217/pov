@@ -469,9 +469,8 @@ PrintNumber("BMars: ",BMars)
 #declare Brilliance=DefaultBrilliance;
 #macro Spherical(ShapeNum,Rot,Color)  
   sphere {
-    PrintNumber("Spherical model: ",
     <0,0,0>,APlanet[ShapeNum]
-    #local MapName="concat("Data/",PlanetName[ShapeNum],"Map.png")
+    #local MapName=concat("Data/",PlanetName[ShapeNum],"Map.png")
     #if(/*ObjDetail[ShapeNum]>=1 & */file_exists(MapName))
       #debug concat("Map ",MapName," Found, using it\n")
       pigment {

@@ -4,12 +4,20 @@
 //otherwise contact me at chrisj@digiquill.com
 //Chris Jeppesen - 3 April 2000
 
+#macro StrVector(V)
+  concat(str(V.x,6,6),",",str(V.y,6,6),",",str(V.z,6,6))
+#end
+
 #macro PrintVector(Label,V)
-  #debug concat(Label,"<",str(V.x,6,6),",",str(V.y,6,6),",",str(V.z,6,6),"> (length: ",str(vlength(V),6,6),")\n")
+  #debug concat(Label,"<",StrVector(V),"> (length: ",str(vlength(V),6,6),")\n")
+#end
+
+#macro StrQuat(V)
+  concat(str(V.x,6,6),",",str(V.y,6,6),",",str(V.z,6,6),",",str(V.t,6,6))
 #end
 
 #macro PrintQuat(Label,V)
-  #debug concat(Label,"<",str(V.x,6,6),",",str(V.y,6,6),",",str(V.z,6,6),",",str(V.t,6,6),"> (length: ",str(sqrt(pow(vlength(<V.x,V.y,V.z>),2)+V.t*V.t),6,6),")\n")
+  #debug concat(Label,"<",StrQuat(V),"> (length: ",str(sqrt(pow(vlength(<V.x,V.y,V.z>),2)+V.t*V.t),6,6),")\n")
 #end
 
 #macro PrintNumber(Label,V)
