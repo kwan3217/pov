@@ -1,0 +1,12 @@
+compose.mp4:
+	for i in {000..333}; do composite -dissolve 50x100 -geometry 640x480 Frames/VoyagerUranusSpice_$i.png -geometry 640x480  Originals/V2U/frame00$((10#$i+200)).png compose/compose$i.png; echo $i; done
+	ffmpeg -f image2 -i compose/compose%03d.png -vb 1000k -y compose.mp4
+
+sd.mp4:
+	for i in {000..333}; do convert Frames/VoyagerUranusSpice_$i.png -resize 640x480 sd/sd$i.png; echo $i; done
+	ffmpeg -f image2 -i sd/sd%03d.png -vb 1000k -y sd.mp4
+
+hd.mp4:
+	for i in {000..333}; do convert Frames/VoyagerUranusSpice_$i.png -resize 1440x1080 hd/hd$i.png; echo $i; done
+	ffmpeg -f image2 -i hd/hd%03d.png -vb 2500k -y hd.mp4
+
