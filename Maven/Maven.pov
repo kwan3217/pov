@@ -7,14 +7,16 @@
 
 #furnsh "generic/generic.tm"
 #furnsh "mvn/mvn.tm"
+#furnsh "mvn_iuv_fake_drm_f.bc"
+#furnsh "trj_o_od018a_140312-151108_reference_v1.bsp"
 
-#declare StartUTC="2015-08-03 10:40:30.773UTC";
+#declare StartUTC="2015 AUG 03 08:58:30.731 TDB";
 #declare StartET=str2et(StartUTC);
 PrintNumber("StartET: ",StartET)
 
 //Animation settings
 #declare T0=0*3600; //Start of animation relative to StartET
-#declare T1=15*3600;//End of animation relative to StartET
+#declare T1=4.5*3600;//End of animation relative to StartET
 #declare T=Linterp(0,T0,1,T1,clock); //Seconds from start of animation
 #declare ET=StartET+T; //ET of this frame
 PrintNumber("This ET: ",ET)
