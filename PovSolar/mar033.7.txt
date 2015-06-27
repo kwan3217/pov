@@ -1,0 +1,62 @@
+                        Satellite Ephemeris Release
+
+
+Satellite Ephemeris: MAR033.7
+
+File location: murphy:/home5/raj/Ephemerides/Mars/mar033.7.nio
+
+Enter SATGEN/7  2-MAR-1998 10:30:30 linked 19-JUN-1997 11:48:08
+Sinclair/Morley theory fit to data - GMM-1 gravity field
+Ephemeris Version Number:  7
+Timespan from JED  2442930.500(01-JUN-1976) to JED  2460687.500(12-JAN-2025)
+File Epoch Julian Date: 2433282.50
+Master Interval =    9.0000 Days
+Equinox Reference Julian Date: 2451545.00
+Planetary Ephemeris Number: DE400  /LE400
+
+Bodies on the File:
+
+    Name          Number          GM                NDIV   NDEG   Model
+
+    Phobos         401     6.900000000000000E-04     21     15    MARROG
+    Deimos         402     1.200000000000000E-04      4     15    MARROG
+    Mars           499     4.282831000000000E+04      1      2    MARROG
+    System                 4.282831081000000E+04
+
+Additional Constants on the File:
+
+    AU       1.495978706930000E+08   RADIUS   3.394200000000000E+03
+    J402     1.958744236927738E-03   J404    -1.544758500000000E-05
+    J406    -4.809812929590655E-06   POLTIM   2.451545000000000E+06
+    ZACPL4   3.176810000000000E+02   ZDEPL4   5.288600000000000E+01
+    DACPL4  -1.082634477472879E-01   DDEPL4  -6.145938682503714E-02
+    WPL4     1.768680000000000E+02   WDP4     3.508919830000000E+02
+    J403     3.150092540660739E-05   J405     5.848879915442181E-06
+    J407    -5.044821990079402E-06   J408    -4.436044287664986E-07
+    C40201   4.800265282192135E-09   S40201   8.433782202002733E-09
+    C40202  -5.442562507653622E-05   S40202   3.207439707968164E-05
+    C40301   4.149159315808776E-06   S40301   2.730396370566899E-05
+    C40302  -5.438445464054723E-06   S40302   2.880981952778337E-06
+    C40303   4.938440449888407E-06   S40303   3.508686713137301E-06
+    C40401   4.055607395939038E-06   S40401   3.503672289945575E-06
+    C40402  -2.507508521175496E-07   S40402  -2.005652604558221E-06
+    C40403   3.867691075800419E-07   S40403  -1.464301447639094E-08
+    C40404   2.243073658508141E-09   S40404  -2.716835353360919E-07
+
+Ephemeris Accuracy (km,sec) - 1 sigma:
+
+    Name               Radial    Downtrack       Normal       Period
+    Phobos              3.000       15.000        7.000     0.000100
+    Deimos              3.000       30.000       16.000     0.000400
+
+
+Chebyshev interpolation error:  50.00 meters
+
+Release to: Mars Projects                      Time: 16-MAR-1998 08:52:01
+
+Preparer: R.A.  Jacobson
+
+Comments:
+Extended ephemeris for mission studies.  Orbital motion model is the extended
+Sinclair/Morley theory fit to astrometric and spacecraft observations.  File
+contains 39196672 bytes.

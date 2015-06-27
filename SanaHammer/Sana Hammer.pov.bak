@@ -1,0 +1,180 @@
+#include "frustum.inc"
+
+#declare Plastic = finish {
+   phong 0.2
+}
+
+#declare Bellows = union { 
+   #local R1=0.15;
+   #local R2=0.02;
+   #local H=0.2;
+   #local R3=0;
+   #local HP=0;   
+   solveFrust(R1,R2,H,R3,HP)     
+   #debug concat("R3: ",str(R3,0,6),"\n")
+   #debug concat("HP: ",str(HP,0,6),"\n")
+   cone {
+      <0, -R1, 0>, 0.3,
+      <0, -R3, 0>, 0.3+HP
+   }
+   cone {
+      <0, R1, 0>, 0.3,
+      <0, R3, 0>, 0.3+HP
+   }           
+   #declare SeamR=0.001;
+   #declare Seam=union {
+     cylinder {
+       <0,R1,0>,<0.3,R1,0>,SeamR
+     }  
+     sphere {
+       <0.3,R1,0>,SeamR
+     }
+     cylinder {
+       <0.3,R1,0>,<0.3+HP,R2,0>,SeamR
+     }
+     torus {
+       R2,SeamR
+       rotate x*90
+       translate x*(0.3+H-R2)
+     }
+     cylinder {
+       <0.3,-R1,0>,<0.3+HP,-R2,0>,SeamR
+     }
+     sphere {
+       <0.3,-R1,0>,SeamR
+     }
+     cylinder {
+       <0,-R1,0>,<0.3,-R1,0>,SeamR
+     }  
+   }     
+   object {Seam}
+   object {Seam rotate y*180}
+   torus {
+     0.3+H-R2,R2
+   }        
+   
+}
+
+#declare HammerHalf = union {
+   object {
+      Bellows
+      scale 1
+      rotate <0, 0, 0>
+      translate <0, 0, 0>
+   }
+   
+   object {
+      Bellows
+      scale 1
+      rotate <0, 0, 0>
+      translate y*0.3
+   }
+   
+   object {
+      Bellows
+      scale 1
+      rotate <0, 0, 0>
+      translate y*(-0.3)
+   }
+   
+   texture {
+      pigment {   
+        cylindrical 
+        color_map {
+         [1-(H+0.3) color rgb <1,0.2,0.2>]
+         [1-(HP+0.3) color rgb <1,0,0>]
+        }
+      }
+      finish {
+         Plastic
+      }
+   }
+   translate y*0.45
+   scale <1, 0.6, 1>
+}
+
+light_source {
+   <0, 5, -3>, rgb 1.5 
+   area_light x*2 z*2 40 40 circular adaptive 2 jitter orient
+}
+#local r=0.1;
+#local l=2;
+#local R=H+0.3;
+union {
+   //*PMName Hammer
+   
+   union {
+      //*PMName Handle
+      
+      cylinder {
+         <0, 0.15, 0>, <0, -0.15, 0>, 0.3
+      }
+      
+      cylinder {
+         <0, 0, 0>, <l, 0, 0>, r
+      }
+      
+      texture {
+         pigment {
+            color rgb <1, 1, 0>
+         }
+         
+         finish {
+            Plastic
+         }
+      }  
+      texture {
+        pigment {
+        // texture pigment {} attribute
+        // create a texture that lays an image's colors onto a surface
+        // image maps into X-Y plane from <0,0,0> to <1,1,0>
+         image_map {
+           png "Kodocha.png" // the file to read (iff/tga/gif/png/jpeg/tiff/sys)
+           map_type 0        // 0=planar, 1=spherical, 2=cylindrical, 5=torus
+           interpolate 2     // 0=none, 1=linear, 2=bilinear, 4=normalized distance
+           once           // for no repetitive tiling
+         } 
+         scale <1,586/2000,1>   
+         translate <0,-292/2000,0>
+         scale 0.6
+         translate x*1
+       }
+     }
+
+   }
+   
+   object {
+      HammerHalf
+      translate y*0.15
+   }
+   
+   object {
+      HammerHalf
+      translate y*0.15
+      rotate x*180
+   }
+   rotate x*90   
+   #local Theta1=asin(R/sqrt(r*r+l*l));
+   #local Theta2=atan(r/l);
+   #local Theta=Theta1-Theta2;
+   rotate -z*degrees(Theta)  
+   translate y*(0.3+H)
+}
+
+camera {
+   perspective
+   location <5, 5, -5>
+   sky <0, 1, 0>
+   direction <0, 0, 1>
+   right <1.3333, 0, 0>
+   up <0, 1, 0>
+   look_at <1, 0.5, 0>
+   angle 20
+}                    
+
+#local S="????????"
+
+plane {
+  y,0
+  pigment {color rgb 1.5}
+}

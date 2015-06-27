@@ -1,0 +1,2 @@
+This script should be referenced with a METHOD of POST.
+If you don't understand this, see this <A HREF="http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html">forms overview</A>.

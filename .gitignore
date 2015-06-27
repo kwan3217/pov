@@ -1,0 +1,15 @@
+*.mp4
+*.mpg
+*.mpeg
+*.mp3
+*.wav
+*.ogg
+Memory.Log
+*.log
+Frames
+*.png
+ffmpeg2pass*
+*.xmp
+StarsCache.inc
+salvage
+

@@ -1,0 +1,30 @@
+LC-39A 0538701
+       3164656
+       
+LC-39B 0537055
+       3166731
+       
+Viewpoint 0538362
+          3166116
+          
+Crawlerway B South 0537086  471
+                   3165266  641
+                   
+Crawlerway B North 0537086  280
+                   3166340  306
+                   
+Distance from South to North 1074m 191E 335N 386pix  0.359pix/m
+Azimuth from South to North  0deg  29.69deg
+
+Crawlerway B South to Viewpoint  850mN 1276mE  305pN 458pE
+Crawlerway B South rotated: 567E 790S
+Viewpoint rotated dapat: 485S 1025E
+
+Viewpoint rotated actual: 1036E 515S   458/469 scale E
+Viewpoint skew: 30S 
+
+
+So... Rotate by 29.69deg, scale by 97.6546% horizontal, skew vertical by -3.7476deg
+
+
+
