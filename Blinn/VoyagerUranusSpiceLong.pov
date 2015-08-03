@@ -4,7 +4,7 @@
 #include "textures.inc"
 #include "SpiceQuat.inc"
 
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
 
 //Actual animation loop will use whatever +kfi and +kff say, but
 //we set up a fake "frame_number" in case we want to render at a different fps.
@@ -150,15 +150,15 @@ global_settings{max_trace_level 10}
   #local PlA=gdpool(concat("BODY",str(ShapeNum,0,0),"_RADII"),0);
   #local PlB=gdpool(concat("BODY",str(ShapeNum,0,0),"_RADII"),2);
   texture {
-    #local MapName=concat("Data/",ShapeName,"Map.png")
+    #local MapName=concat(ShapeName,"Map.png")
     #if(/*ObjDetail[ShapeNum]>=1 & */file_exists(MapName))
       #debug concat("Map ",MapName," Found, using it\n")
       pigment {
         image_map
         {
           png MapName
-          map_type spheroid
-          flatness (PlA-PlB)/PlA
+          map_type spherical //spheroid
+//          flatness (PlA-PlB)/PlA
           interpolate 4
         }
         rotate x*90
@@ -450,7 +450,7 @@ SunFlare(spkezr("SUN",ET,RefFrame,"LT+S",Spacecraft),CameraLoc,2)
 
 camera {
   up y*CamUp
-  right x*CamRight
+  right -x*CamRight
   sky CamSky
   angle CamAngle
   location CameraLoc 

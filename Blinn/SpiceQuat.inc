@@ -1,6 +1,6 @@
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
 
-global_settings {right_handed}
+//global_settings {right_handed}
 
 #macro AA(A,Alpha)
   #local S=sin(radians(Alpha/2));

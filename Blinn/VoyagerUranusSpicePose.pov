@@ -3,7 +3,7 @@
 #include "hud.inc"
 #include "textures.inc"
 
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
 
 #furnsh "generic/generic.tm"
 #furnsh "Voyager/vgr2.tm"
