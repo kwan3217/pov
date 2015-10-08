@@ -1,5 +1,3 @@
-#version unofficial MegaPov 0.71;
-
 #include "F1.inc"
 
 #declare FlagStar=object {

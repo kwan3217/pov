@@ -1,5 +1,3 @@
-#version unofficial MegaPov 0.71;
-
 #include "J2.inc"
 
 #declare UnitedU=union {

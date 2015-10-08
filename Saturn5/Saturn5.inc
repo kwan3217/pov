@@ -1,5 +1,3 @@
-#version unofficial MegaPov 0.71;
-
 #declare Hemisphere=sphere {
   0,1
   clipped_by {cylinder {<0,0,0>,<0,1.001,0>,1.001}}
@@ -27,8 +25,8 @@
 #include "S-IVB.inc"
 
 #declare Saturn5=union {
-  object {S1C hollow}
-  object {Interstage}
+//  object {S1C hollow}
+//  object {Interstage}
   object {S2}
   object {S4B}
   object {Spacecraft}

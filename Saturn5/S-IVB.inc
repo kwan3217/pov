@@ -1,5 +1,3 @@
-#version unofficial MegaPov 0.71;
-
 #include "frustum.inc"
 
 #declare S4B=union {

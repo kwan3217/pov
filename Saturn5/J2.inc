@@ -1,5 +1,3 @@
-#version unofficial MegaPov 0.71;
-
 #include "shapes.inc"
 #include "colors.inc"
 #include "metals.inc"
