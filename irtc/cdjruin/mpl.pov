@@ -7,7 +7,7 @@
 #include "metals.inc"
 
 global_settings {ambient_light 0.4 assumed_gamma 2.2}
-#declare SolarCells=0;   
+#declare SolarCells=1;   
 #declare SkyLight=1;
 #declare SkyLights=20;
 #declare ComplexGround=1;
