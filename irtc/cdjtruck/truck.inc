@@ -123,13 +123,13 @@
     <-1.5,1,0.6>,<-1.5,1,1.4>,0.03
     texture {T_Chrome_5E}
   }
-  #declare I=1.05
+  #declare I=1.05;
   #while(I<1.99)
     cylinder {
       <-1.5015,I,0.6>,<-1.5015,I,1.4>,0.015
       texture {T_Chrome_5E}
     }
-    #declare I=I+0.05
+    #declare I=I+0.05;
   #end
   //radiator grill
   box {
