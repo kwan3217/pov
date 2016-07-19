@@ -4,44 +4,46 @@
 // custom galaxy scenes, piece by piece.
 //
 // Recommended resolution: 640 x 480, anti-aliasing on
+#version 3.7;
+global_settings {assumed_gamma 2.2}
 
 // STARFIELD
-   #declare star_count = 2000
-   #declare star_scale = .5
+   #declare star_count = 2000;
+   #declare star_scale = .5;
 //   #include "GALAXY.SF"
 
-   #declare galaxy_seed = 1
-   #declare star_count = 500
-   #declare star_type = 3
-   #declare star_colour = <1, .9, .7>
-   #declare star_scale = 1.5
+   #declare galaxy_seed = 1;
+   #declare star_count = 500;
+   #declare star_type = 3;
+   #declare star_colour = <1, .9, .7>;
+   #declare star_scale = 1.5;
 //   #include "GALAXY.SF"
 
 // PINK NEBULA
-   #declare galaxy_colour1 = <1.2, 1, 1.1>
-   #declare galaxy_colour2 = <1, .3, .6>
-   #declare galaxy_pattern_origin = x * 1
-   #declare galaxy_turb_origin = x * -4
-   #declare galaxy_object_name = "Nebula3"
-   #declare galaxy_object_scale = 1.75
-   #declare galaxy_object_position = <-5, 5, 0>
-   #declare galaxy_cluster_name = ""
+   #declare galaxy_colour1 = <1.2, 1, 1.1>;
+   #declare galaxy_colour2 = <1, .3, .6>;
+   #declare galaxy_pattern_origin = x * 1;
+   #declare galaxy_turb_origin = x * -4;
+   #declare galaxy_object_name = "Nebula3";
+   #declare galaxy_object_scale = 1.75;
+   #declare galaxy_object_position = <-5, 5, 0>;
+   #declare galaxy_cluster_name = "";
 //   #include "GALAXY.OBJ"
 
 // BLUE NEBULA
-   #declare galaxy_colour1 = <.5, .9, 1.2>
-   #declare galaxy_colour2 = <.1, .3, .5>
-   #declare galaxy_pattern_origin = x * -20
-   #declare galaxy_object_name = "Nebula2"
-   #declare galaxy_object_scale = 1.2
-   #declare galaxy_object_position = <10, -12, 0>
+   #declare galaxy_colour1 = <.5, .9, 1.2>;
+   #declare galaxy_colour2 = <.1, .3, .5>;
+   #declare galaxy_pattern_origin = x * -20;
+   #declare galaxy_object_name = "Nebula2";
+   #declare galaxy_object_scale = 1.2;
+   #declare galaxy_object_position = <10, -12, 0>;
 //   #include "GALAXY.OBJ"
 
 // LARGE STAR
-   #declare galaxy_object_name = "Star1"
-   #declare galaxy_colour1 = <1.5, 1.5, 1.5>
-   #declare galaxy_object_scale = 1
-   #declare galaxy_object_position = <17, -10, 0>
+   #declare galaxy_object_name = "Star1";
+   #declare galaxy_colour1 = <1.5, 1.5, 1.5>;
+   #declare galaxy_object_scale = 1;
+   #declare galaxy_object_position = <17, -10, 0>;
 //   #include "GALAXY.OBJ"
 
 light_source { <10, 10, -10> color rgb 1 shadowless }
@@ -49,7 +51,7 @@ light_source { <10, 10, -10> color rgb 1 shadowless }
 #include "truck.inc"
 #include "colors.inc"
 
-#declare Clock=clock*1.4
+#declare Clock=clock*1.4;
 
 //object {Truck translate z*10}
 
@@ -97,7 +99,7 @@ sphere {
   no_shadow
 }
 
-#declare I=2
+#declare I=2;
 #while (I<40)
   torus {
     I*0.05,0.05
@@ -116,32 +118,32 @@ sphere {
     rotate x*-30
     translate <15,-3,30>
   }
-  #declare I=I+1
+  #declare I=I+1;
 #end
 
-#declare X1A=14
-#declare X2A=-10
-#declare Z1A=-1.5
-#declare Z2A=10
+#declare X1A=14;
+#declare X2A=-10;
+#declare Z1A=-1.5;
+#declare Z2A=10;
 
-#declare X1B=-8
-#declare X2B=-8
-#declare Z1B=10
-#declare Z2B=-20
+#declare X1B=-8;
+#declare X2B=-8;
+#declare Z1B=10;
+#declare Z2B=-20;
 
-#declare X1T=3.6
-#declare Y1T=-0.8
-#declare Z1T=6
+#declare X1T=3.6;
+#declare Y1T=-0.8;
+#declare Z1T=6;
 
-#declare X2T=15.5
-#declare Y2T=-3
-#declare Z2T=30
+#declare X2T=15.5;
+#declare Y2T=-3;
+#declare Z2T=30;
 
-#declare I=Clock*0.85
+#declare I=Clock*0.85;
 
-#declare XT=(X2T-X1T)*I+X1T
-#declare YT=(Y2T-Y1T)*I+Y1T
-#declare ZT=(Z2T-Z1T)*I+Z1T
+#declare XT=(X2T-X1T)*I+X1T;
+#declare YT=(Y2T-Y1T)*I+Y1T;
+#declare ZT=(Z2T-Z1T)*I+Z1T;
 
 object {
   Truck
@@ -154,12 +156,12 @@ object {
   no_shadow
 }
 
-#declare I=0
+#declare I=0;
 #while (I<0.1)
-  #declare XA=(X2A-X1A)*I+X1A
-  #declare XB=(X2B-X1B)*I+X1B
-  #declare ZA=(Z2A-Z1A)*I+Z1A
-  #declare ZB=(Z2B-Z1B)*I+Z1B
+  #declare XA=(X2A-X1A)*I+X1A;
+  #declare XB=(X2B-X1B)*I+X1B;
+  #declare ZA=(Z2A-Z1A)*I+Z1A;
+  #declare ZB=(Z2B-Z1B)*I+Z1B;
   cone {
     <XA,0,ZA>,0.05
     <XB,0,ZB>,0.3
@@ -167,7 +169,7 @@ object {
     translate <0,-3,30>
     pigment {rgbt<1,0,0,0.8>}
   }
-  #declare I=I+0.01
+  #declare I=I+0.01;
 #end
 
 
