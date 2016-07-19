@@ -1,0 +1,61 @@
+EMAIL: chrisj@digiquill.com	
+NAME: Chris Jeppesen
+TOPIC: Games
+COPYRIGHT: I SUBMIT TO THE STANDARD RAYTRACING COMPETITION COPYRIGHT.
+TITLE: 3D Pool
+COUNTRY: USA
+WEBPAGE: http://www.digiquill.com/kwansys/index.txt
+RENDERER USED: POV-Ray for Windows v3.10
+TOOLS USED: 
+  Person.inc, Created by Hero Ngauv
+  cmpeg.exe
+  sPatch.exe
+CREATION TIME: 
+  about 2 1/2 months design
+  Final render time: Too Long!
+
+HARDWARE USED:
+  AMD K6 266MHz w/ 128MB RAM
+  AMD K6 233MHz w/  64MB RAM
+  AMD K5 166MHz w/  32MB RAM
+
+VIEWING RECOMMENDATIONS:
+  Any old MPEG player should work, preferrably run it at 20-30 fps
+
+ANIMATION DESCRIPTION:
+  Everyone knows that All Work and No Play makes Jack a dull boy. So, Astronaut 
+Johnny Lingo has put together a small game room on board the Space Station Kwan.
+He put together a three-dimensional pool table from some PVC pipe and plexiglass
+and hooked it to the station computer so he would have someone to play against 
+when everyone else was outside working.
+  
+  3D Pool is played with 14 striped and solid colored balls and one cue ball. The
+object is basically the same as two dimensional Eight-Ball, except there are two
+black balls, one striped and one solid. The object is to pocket all your balls,
+black one last, before the opponent does.
+
+  Since the pool table is completely boxed in, cue sticks cannot work. Instead, 
+there is a series of electric coils embedded in the rails of the table. The cue 
+ball has a solid aluminum core, so it reacts to the coils. The other balls are
+solid plastic, and therefore inert. The coils are synchronized and controlled by
+the computer to simulate the action of a stick on the cue ball. So that you can
+see where you will shoot, holographic film has been attached to all six faces of
+the table. An imaginary cue stick is projected holographically. 
+
+  The computer figures its shots mathematically. The person lines up the image of
+the cue where he wants to shoot, with a hand controller.
+
+DESCRIPTION OF HOW THIS ANIMATION WAS CREATED:
+  This animation makes extensive use of arrays, macros, loops, and file I/O to 
+figure the trajectory of the pool balls. The hardest part of this project was 
+the mechanics engine, an .inc file with several macros. This file uses the standard
+conservation of energy and momentum formulas, for the special case of all the balls
+having the same size and mass. It keeps two arrays of vectors, one element for each
+ball. The formulas are stepped 20 times for each frame, a total of 16000 steps in
+this animation. 
+
+  Before each shot, the aimer looks for a shot that is not too indirect, and not
+blocked by other balls. This is simple vector math. In another version I may
+  
+    
+
