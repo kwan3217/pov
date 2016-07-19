@@ -4,7 +4,7 @@
 #include "textures.inc" 
 
 #if(clock<8.75)
-#declare UseShuttle=1
+#declare UseShuttle=1;
 #end
 
 #include "station.inc"
@@ -19,7 +19,7 @@
 #declare WallZ=array[2] {-1800,1800}
                       
 #declare AirResist=0;
-#declare OrigVec="earthvec.inc"
+#declare OrigVec="earthvec.inc";
 #include "mechanic.inc"
 
 #declare star_count = 2000;
@@ -38,7 +38,7 @@ sphere {
   texture {
     pigment {
       image_map {
-        tga "earthimg.tga"
+        jpeg "earthimg.jpg"
         map_type 1
         interpolate 4
       }

@@ -36,7 +36,7 @@ sphere {
   texture {
     pigment {
       image_map {
-        tga "earthimg.tga"
+        jpeg "earthimg.jpg"
         map_type 1
         interpolate 4
       }
@@ -121,7 +121,7 @@ union {
       image_map {
         gif "3dpool.gif" // the file to read (iff/gif/tga/png/sys)
         map_type 0 // 0=planar, 1=spherical, 2=cylindrical, 5=torus
-        interpolate 0 // 0=none, 1=linear, 2=bilinear, 4=normalized distance
+//        interpolate 0 // 0=none, 1=linear, 2=bilinear, 4=normalized distance
       }
       rotate x*90
       translate <-1/2,0,-1/2>
