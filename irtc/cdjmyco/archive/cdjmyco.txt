@@ -1,0 +1,40 @@
+TITLE: The Mycora are coming...
+NAME: Chris Jeppesen
+COUNTRY: USA
+EMAIL: chrisj@digiquill.com
+WEBPAGE: http://www.digiquill.com/kwansys/index.txt
+TOPIC: Microcosms
+COPYRIGHT: I SUBMIT TO THE STANDARD RAYTRACING COMPETITION COPYRIGHT.
+MPGFILE: cdjmyco.mpg
+RENDERER USED: 
+    POV-Ray for Windows v3.10
+
+
+HARDWARE USED: 
+
+  AMD K6 266MHz w/ 128MB RAM
+
+IMAGE DESCRIPTION:
+This is a MYCORUM. Doesn't look like much, does it. It's just a simple 
+little atomic scale machine, whose sole reason for existence is to 
+build more copies of itself. By itself it's not much, but
+its strength is it can make copies of itself from whatever is around it.
+It really likes organic materials, such as wood, plastic, plants, people,
+and it can adapt to whatever environment it is in. Some mycorum have 
+evolved to use silicon in stone and glass, some like metals, some like
+water, some like air, and so on. They all like heat. If nothing stops them, 
+they might take over the world.
+
+This is from Bloom, by Wil McCarthy. Check out the first chapter at:
+http://www.amazon.com/exec/obidos/cache/excerpts/dab/0345408578.html/o/qid=916505
+319/sr=2-3/002-7977859-7559007
+
+DESCRIPTION OF HOW THIS IMAGE WAS CREATED:
+  What is there to tell? It's just basic CSG. 
+
+  I am basically doing this image because I want the right to vote on 
+the contest. So all you artists out there, Exercise Your Suffrage! Vote
+for the winner of this contest.
+   
+
+
