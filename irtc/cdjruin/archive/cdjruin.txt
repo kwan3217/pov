@@ -1,0 +1,93 @@
+TITLE: Mars Polar Lander What REALLY happened.
+NAME: Chris Jeppesen
+COUNTRY: USA
+EMAIL: chrisj@digiquill.com
+WEBPAGE: http://www.kwansystems.org/index.html
+TOPIC: Ruins
+COPYRIGHT: I SUBMIT TO THE STANDARD RAYTRACING COMPETITION COPYRIGHT.
+JPGFILE: cdjruin.jpg
+ZIPFILE: cdjruin.zip
+RENDERER USED: 
+    POV-Ray for Windows v3.10g
+
+
+TOOLS USED: 
+
+Paint Shop Pro 6.01 for JPEG conversion
+Kwan Systems RockGen to make height fields
+Spring.inc by Ronald L. Parker
+
+
+RENDER TIME: 
+
+
+2 hours 13 minutes 57 seconds
+
+
+HARDWARE USED: 
+
+  AMD K6 266MHz w/ 128MB RAM
+
+
+IMAGE DESCRIPTION: 
+
+
+On December 3, 1999, the Mars Polar Lander entered the atmosphere of Mars,
+survived the intense heat of entry, opened its parachute, locked radar on
+target, released the parachute, and landed safely on the surface of Mars.
+It was on the doorstep of the greatest discovery in the history of space
+exploration, the Martian Stonehenge. This ancient ruin is over four 
+million years old. On Earth, the monument would have been eroded away long
+ago, but due to the extremely dry and thin air, little damage has 
+occurred. Although often compared to Stonehenge on Earth, this ancient
+instrument is the last still standing in an observatory complex 
+comparable to that built in Jaipur, India, in 1720. Later expeditions 
+would discover the foundations of many other instruments, either blown 
+over or buried in dust. Martian Stonehenge is a multi-point sundial, used
+for extremely accurate measurement of the 2-dimensional position and 
+angular size of the sun in the sky. Stones found near the site have 
+engraved upon them an ellipse matching the shape of Mars' orbit. 
+Presumably Martian Stonehenge was used to chart the course and size of the
+sun to determine this orbit.
+
+Unfortunately the lander decided to land on the wrong side of the monument.
+Direct-To-Earth contact is blocked 98% of the time by the sundial towers,
+and due to a bug in the software controlling the relay sattelite backup 
+link, no contact was ever established. A faint signal was measured by 
+radio astronomers in Stanford, California on January 4, 2000, but was 
+finally dismissed as an earthbound source when it could not be detected 
+again. The real story of the Mars Polar Lander was not learned until
+the first manned expedition, sent by Kwan Astronautics in 2047.
+
+Mars Polar Lander was ruined by a ruin.
+
+
+DESCRIPTION OF HOW THIS IMAGE WAS CREATED: 
+
+
+When I started this image, I was trying to think of a failure scenario 
+which would simultaneously look good, be renderable, and be plausible.
+My worry was that some discovery between the start of the contest and
+now would invalidate my picture, but the discovery by Stanford has
+actually made this more plausible, in my opinion. This scenario is
+fiction. I believe what actually happened is that the lander made it 
+safely, but was turned in the wrong direction for communications with
+Earth. The radio relay on the Mars Global Surveyor has never been tested
+end-to-end, and probably is faulty.
+
+The Lander model was designed using photographs and diagrams from the
+official web site. It is all hand-coded CSG. The engraved rock is the
+font Aurabesh.ttf from www.theforce.net. 
+
+Note, in the included ZIP file, there is only one rock height field.
+The rest are very similair, but will need to be regenerated in order
+to render this image. Use any old heightfield where the edge is 
+completely black. Also, the Kwan Systems Logo is not included.
+
+Congratulations go out to the Oregon Tech Basketball Team, which on
+February 29 won the Cascade Collegaite Conference Championship! In a 
+hard-fought game, the Owls of OIT prevailed over the Western Baptist
+Warriors, 60-50. Good luck in the National Tournament! Go Owls!
+
+
+
