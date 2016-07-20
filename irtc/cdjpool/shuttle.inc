@@ -1,4 +1,4 @@
-#warning "Parsing Space Shuttle (shuttle.inc)\n"
+//#debug "Parsing Space Shuttle (shuttle.inc)\n"
 
 #include "shutex.inc"
 
@@ -3704,4 +3704,4 @@ union {
 	}
 	texture {Layer8Tex}
 }
-#warning "Done with Space Shuttle (shutex.inc)\n"
+//#debug "Done with Space Shuttle (shutex.inc)\n"

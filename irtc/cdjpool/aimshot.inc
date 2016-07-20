@@ -21,11 +21,11 @@
 #end
 
 #macro DispVec(Label,V)
-  #warning concat(Label,": <",str(V.x,8,14),",",str(V.y,8,14),",",str(V.z,8,14),">  (Len: ",str(vlength(V),8,14),")\n")
+  #debug concat(Label,": <",str(V.x,8,14),",",str(V.y,8,14),",",str(V.z,8,14),">  (Len: ",str(vlength(V),8,14),")\n")
 #end
   
 #macro DispReal(Label,V)
-  #warning concat(Label,": ",str(V,8,14),"\n")
+  #debug concat(Label,": ",str(V,8,14),"\n")
 #end
   
 #macro Aim(Time,CuePos,ObjPos,HolePos)

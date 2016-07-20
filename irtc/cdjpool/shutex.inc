@@ -1,5 +1,5 @@
  //Space Shuttle Textures
-#warning "Parsing Space Shuttle Textures (shutex.inc)\n"
+//#debug "Parsing Space Shuttle Textures (shutex.inc)\n"
  
                          
 //Layer 1 - Wing tops                        
@@ -79,4 +79,4 @@
   }
 }
 
-#warning "Done with Shuttle Textures (shutex.inc)\n"
+//#debug "Done with Shuttle Textures (shutex.inc)\n"

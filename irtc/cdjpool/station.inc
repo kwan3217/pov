@@ -1,15 +1,15 @@
 //Station.inc
 //Space Station Model
 
-#warning "Parsing Space Station (station.inc)\n"
+//#debug "Parsing Space Station (station.inc)\n"
 #ifndef(InternalBrightness)
 #declare InternalBrightness=1;
 #end
 
 #include "metals.inc"
-#warning "Parsing Astronaut (astrnaut.inc)\n"
+//#debug "Parsing Astronaut (astrnaut.inc)\n"
 #include "astrnaut.inc"
-#warning "Done with Astronaut (astrnaut.inc)\n"
+//#debug "Done with Astronaut (astrnaut.inc)\n"
 
 #declare TrussTexture=texture {
   pigment {color White}
@@ -518,4 +518,4 @@
 #end
 #end
 }
-#warning "Done with Space Station (station.inc)\n"
+//#debug "Done with Space Station (station.inc)\n"
