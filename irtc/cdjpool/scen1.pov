@@ -8,18 +8,8 @@
 
 #declare CuePointAt=AimPoint;
 #declare CuePullBack=5;
-#warning concat("CuePullBack: ",str(CuePullBack,0,5),"\n")
+#debug concat("CuePullBack: ",str(CuePullBack,0,5),"\n")
 #include "poolcue.inc"
-
-#declare ScaleFac=0.03;  
-#declare TransFac=CenterPoolModule;
-#declare EarthPos=<0,0,0>;
-Earth(120+30+clock*8)
-
-light_source {
-  <10000000,0,-10000000>
-  color <1,1,1>*InternalBrightness
-}
 
 PoolGame()
 

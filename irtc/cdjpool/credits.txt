@@ -28,5 +28,5 @@
 {"7","arial.ttf","Special thanks to"},
 {"8","arialbd.ttf","POV-Ray Team"},    
 {"8","arialbd.ttf",""},
-{"7","arial.ttf","Copyright © 1998 Kwan Sytstems"}
+{"7","arial.ttf","Copyright (C) 1998, 2016 Kwan Sytstems"}
 }

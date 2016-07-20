@@ -4,31 +4,13 @@
 #declare InternalBrightness=min(8-clock,1);
 #declare UseShuttle=1;
 #include "station.inc"
-#if(clock<8)
-#declare MechanicClock=clock;
-#end
 
-#declare OrigVec="state0.inc"
 #declare AirResist=0;
-#if(clock<0)
-  #include OrigVec
-#else
-  #include "mechanic.inc"
-#end
+Mechanic("state0.inc")
 #declare CuePointAt=AimPoint;
 #declare CuePullBack=max(-clock*5,0);
 #debug concat("CuePullBack: ",str(CuePullBack,0,5),"\n")
 #include "poolcue.inc"
-
-#declare ScaleFac=0.03;  
-#declare TransFac=CenterPoolModule;
-#declare EarthPos=<0,0,0>;
-Earth(30+clock*0.9)
-
-light_source {
-  <10000000,0,-10000000>
-  color <1,1,1>*InternalBrightness
-}
 
 PoolGame()
 

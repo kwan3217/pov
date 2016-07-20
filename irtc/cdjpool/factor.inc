@@ -5,6 +5,14 @@ global_settings {assumed_gamma 2.2 max_trace_level 10}
 #include "textures.inc"
 #include "pooltabl.inc"
 
+#macro Mechanic(OrigVec)
+#if(clock<0)
+  #include OrigVec
+#else
+  #include "mechanic.inc"
+#end
+#end
+
 #macro Earth(yrot)
 sphere {
   <0,0,0>,1
@@ -64,7 +72,18 @@ object {
 #end
 
 #macro PoolGame()
+#declare ScaleFac=0.03;  
+#declare TransFac=CenterPoolModule;
+#declare EarthPos=<0,0,0>;
+Earth(30+clock)
+
 UseStation(0)
+
+light_source {
+  <10000000,0,-10000000>
+  color <1,1,1>*InternalBrightness
+}
+
 union {
   #declare I=0;
   #declare Vectors=0;

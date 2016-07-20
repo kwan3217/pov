@@ -12,7 +12,7 @@
 #declare WallBallE=0.95;  //Wall-Ball colision elasticity. 1 is perfectly elastic, 0 is stick.
 #end
 #ifndef(MaxIters)
-#declare MaxIters=10;   //Steps of iteration during one frame
+#declare MaxIters=20;   //Steps of iteration during one frame
 #end
 #ifndef(SpdCutoff)
 #declare SpdCutoff=0.00; //Minimum ball speed
