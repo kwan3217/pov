@@ -1,6 +1,6 @@
 //Poolball.inc
 //requires: BallNumber
-#warning "Parsing Pool Ball (poolball.inc)\n"
+//#debug "Parsing Pool Ball (poolball.inc)\n"
 
 #declare NumberHeight=0.353;
 #declare NumberWidth=0.24;
@@ -160,4 +160,4 @@
 #end
 #end
 
-#warning "Done with Pool Ball (poolball.inc)\n"
+//#debug "Done with Pool Ball (poolball.inc)\n"

@@ -2,7 +2,7 @@
           
 //Pool table s 30 ball radii on the short sides, 60 on the long sides
 
-#warning "Parsing Pool Table (pooltabl.inc)\n"
+//#debug "Parsing Pool Table (pooltabl.inc)\n"
 
 #macro WireBox(v1,v2,r)  //V1 and v2 are vector corners, r is radius of wire
   //X
@@ -156,4 +156,4 @@
   }
 }       
 
-#warning "Done with Pool Table (pooltabl.inc)\n"
+//#debug "Done with Pool Table (pooltabl.inc)\n"

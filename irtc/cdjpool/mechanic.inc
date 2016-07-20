@@ -1,6 +1,6 @@
 //Billiard Mechanics Include File
 
-#warning "Parsing Mechanics Engine (mechanic.inc)\n"
+//#debug "Parsing Mechanics Engine (mechanic.inc)\n"
 
 #ifndef(Gravity)
 #declare Gravity=-0*y;
@@ -34,7 +34,7 @@
 #end
 
 #macro Log(S)
-  #warning S
+//  #debug S
   #write (LogF,S)
 #end
 
@@ -106,7 +106,7 @@
   #declare Iters=MaxIters;
   #while (Iters>0)
     #if(mod(Iters,20)=0)
-      #warning concat(str(Iters,0,0)," iterations left...\n")
+//      #debug concat(str(Iters,0,0)," iterations left...\n")
     #end
     #declare CurrentTime=Q+(MaxIters-Iters)*MicroClockDelta;
     #declare I=0;
@@ -306,5 +306,5 @@ WriteStateVectors()
 //When you are all done,
 //state vectors BallPos and BallSpd are valid for this frame.
 
-#warning "Done with Mechanics Engine (mechanic.inc)\n"
+//#debug "Done with Mechanics Engine (mechanic.inc)\n"
 

@@ -2,7 +2,7 @@ cdjpool.mpg: Frames lores0.stamp lores1.stamp lores2.stamp lores3.stamp lores4.s
 	ffmpeg -i Frames/scen%03d.png -y $@
 
 cdjpool.mp4: Frames hires0.stamp hires1.stamp hires2.stamp hires3.stamp hires4.stamp hires5.stamp hires6.stamp hires7.stamp hires8.stamp hires9.stamp
-	ffmpeg -i Frames/scenHiRes%03d.png -y $@
+	ffmpeg -r 15 -i Frames/scenHiRes%03d.png -y $@
 
 lores0.stamp: all.ini scen0.pov 
 	uberpov all.ini +ki0 +kf8 +iscen0.pov +oFrames/scen0.png
@@ -43,5 +43,5 @@ clean:
 	$(RM) cdjpool.mpg
 	$(RM) cdjpool.mp4
 	$(RM) -rf Frames
-
+	$(RM) *res[0-9].stamp
 

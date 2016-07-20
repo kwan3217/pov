@@ -1,7 +1,8 @@
 //intro.pov
 //Render with
 //+fn +kf11.8 +kff100 -ul +j0 +am2 +kc +ki1.8
-
+#version 3.7;
+global_settings {assumed_gamma 2.2}
 #include "colors.inc"
 #include "textures.inc"
 //#declare UseTransparentWalls=0;
@@ -28,7 +29,7 @@
 #end
 #declare CuePointAt=AimPoint;
 #declare CuePullBack=max(-clock*5,0);
-#warning concat("CuePullBack: ",str(CuePullBack,0,5),"\n")
+#debug concat("CuePullBack: ",str(CuePullBack,0,5),"\n")
 #include "poolcue.inc"
 
 sphere {

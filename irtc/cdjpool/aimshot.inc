@@ -63,22 +63,22 @@
           #ifdef(Log)
             Log(concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot Possible (straightness = ",str(ShotStraightness,0,3),")\n"))
           #else
-            #warning concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot Possible (straightness = ",str(ShotStraightness,0,3),")\n")
+            #debug concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot Possible (straightness = ",str(ShotStraightness,0,3),")\n")
           #end
           #declare TargetBall=Target;
           #declare BallSpd[0]=ShootVec;
         #else
           #declare ShotPossible=0;
           #declare I=I+1;
-          #warning concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot not Possible (object ball blocked)\n")
+          #debug concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot not Possible (object ball blocked)\n")
         #end
       #else
         #declare ShotPossible=0;
-        #warning concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot not Possible (Cue ball blocked)\n")
+        #debug concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot not Possible (Cue ball blocked)\n")
         #declare I=I+1;
       #end
     #else
-//      #warning concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot not Possible (straightness = ",str(ShotStraightness,0,3),")\n")
+//      #debug concat("Ball ",str(Target,0,0),", Hole ",str(I,0,0),": Shot not Possible (straightness = ",str(ShotStraightness,0,3),")\n")
       #declare I=I+1;
     #end
   #end
