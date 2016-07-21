@@ -70,6 +70,10 @@ light_source
 
 camera
 {
+  up y
+  right image_width/image_height*x
+  //Use this to keep the same vertical angle
+  //angle 60*3/4*image_width/image_height
   location  <0.0 , 0.0 ,-5.0>
   look_at   <0,0,0>//<15.0 , -3.0 , 30.0>
 //  angle 7
@@ -207,5 +211,5 @@ text
   scale 0.6
   pigment {rgb 1}
   translate y*-2.2
-  translate x*(3.6-clock*15)
+  translate x*(3.6-clock*15)*image_width/image_height*3/4
 }

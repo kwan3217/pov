@@ -71,9 +71,12 @@ light_source
 
 camera
 {
+  up y
+  right image_width/image_height*x
+  //Use this to keep the same vertical angle
+  angle 7*3/4*image_width/image_height
   location  <15.0 , -3.0 ,25.0>
   look_at   <15.0 , -3.0 , 30.0>
-  angle 7
 }
 
 sphere { 0, 1
@@ -180,7 +183,7 @@ text
   "Black Holes Suck Dump Trucks!",
   0.1, 0
   scale 0.1
-  translate x*(0.65-Clock*2.09)
+  translate x*(0.65-Clock*2.09)*image_width/image_height*3/4
   rotate y*65
   pigment {rgb <1,0,0>}
   translate -y*2.95

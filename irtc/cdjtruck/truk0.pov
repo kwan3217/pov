@@ -67,9 +67,12 @@ object {
 
 camera
 {
+  up y
+  right image_width/image_height*x
+  //Use this to keep the same vertical angle
+  angle 60*3/4*image_width/image_height
   location  <0.0 , 0.0 ,-5.0>
   look_at   <XT,YT,ZT>//<15.0 , -3.0 , 30.0>
-  angle 60
 }
 
 
