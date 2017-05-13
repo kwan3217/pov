@@ -1,4 +1,3 @@
-#version unofficial Megapov 1.22;
 
 #if(clock>5) 
   #declare CameraProgress=1;
@@ -35,10 +34,9 @@ camera {
 
 #declare Subtitle=text {
    //*PMName Kwan
-   ttf "/usr/fonts/arialn.ttf"
+   ttf "arial.ttf"
    "a division of Kwan Systems"
    0.0, <0, 0>
-   h_align_center
    no_shadow
    finish {
      ambient 1 diffuse 0
@@ -51,9 +49,10 @@ camera {
       color rgbf <1, 1, 1,BLinterp(5,1,6,0,clock)>
    }
 }
-
+#declare SubtitleCenter=(max_extent(Subtitle)-min_extent(Subtitle))/2;
 union {
   Subtitle
+  translate -SubtitleCenter.x
   LocationLookAt(CamLoc,CamLook,y)
 }
 
@@ -658,7 +657,7 @@ object {
 
 text {
    //*PMName Kwan
-   ttf "/usr/fonts/arialnbi.ttf"
+   ttf "arialbi.ttf"
    "Kwan"
    0.02, <0, 0>
    scale <1.4, 1.4, 1>
@@ -671,7 +670,7 @@ text {
 
 text {
    //*PMName Heavy Industries
-   ttf "/usr/fonts/arialnbi.ttf"
+   ttf "arialbi.ttf"
    "Heavy Industries"
    0.02, <0, 0>
    scale <0.5, 0.5, 1>

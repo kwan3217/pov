@@ -1,5 +1,5 @@
-#version unofficial Megapov 1.22;
-global_settings {right_handed}
+//#version unofficial Megapov 1.22;
+//global_settings {right_handed}
 #include "SpiceQuat.inc"
 #include "Voyager.inc"
 

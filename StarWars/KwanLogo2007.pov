@@ -1,9 +1,8 @@
 #include "KwanMath.inc"
 #include "LocLook.inc"
 
-#version unofficial Megapov 1.22;
-
-#declare OutAspect=4/3;
+//#declare OutAspect=4/3;
+#declare OutAspect=image_width/image_height;
 
 #if(clock<11) 
   #include "SceneA.inc"

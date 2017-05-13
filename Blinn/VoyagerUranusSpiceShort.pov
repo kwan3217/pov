@@ -4,8 +4,6 @@
 #include "textures.inc"
 #include "SpiceQuat.inc"
 
-#version unofficial Megapov 1.22;
-
 #furnsh "generic/generic.tm"
 #furnsh "Voyager/vgr2.tm"
 
@@ -49,7 +47,7 @@ PrintNumber(etcal(ETScan),ETScan)
 #declare CloseupVertigo=array[7]     { 1,10  ,40  ,40  ,40  ,10  ,-1}
 #declare H=array[7]                  {-4,1.3 ,2.2 ,1.2 ,1.4 ,3.4 ,-1} //Absolute magnitudes of satellites
 
-#declare TargetTable=array[11][2] {{str2et("1986-01-24 01:00:00TDB"),0},
+#declare TargetTable=array[10][2] {{str2et("1986-01-24 01:00:00TDB"),0},
                                    {str2et("1986-01-24 08:30:00TDB"),4}, //VOBEST
                                    {str2et("1986-01-24 09:00:00TDB"),0},
                                    {str2et("1986-01-24 11:30:00TDB"),2}, //VUBEST
@@ -132,7 +130,6 @@ global_settings{max_trace_level 10}
 
 //Ring data from Constantine Thomas' Site http://www.lancs.ac.uk/postgrad/thomasc1/render/planets/uranus.htm
 //Translated to POV by me
-//All rings are rendered 100km wider than reality - inner radius is decreased by this amount
 
                           // 6     5     4     alpha beta  eta   gamma delta epsilon
 #declare RingOuter=array[9] {41910,42305,42610,44807,45708,47260,47710,48310,51300}
@@ -142,7 +139,8 @@ global_settings{max_trace_level 10}
   Spherical(799,"Uranus",<0,1,0>)
   union {
   #local I=0;
-  #while(I<9)
+  #while(I<dimension_size(RingOuter,1))
+    //All rings are rendered 100km wider than reality - inner radius is decreased by this amount
     disc {0,z,RingOuter[I],RingInner[I]-100}
     #local I=I+1;
   #end
@@ -244,20 +242,21 @@ object{InPlaceUranus}
     }  
   #else
     //Simplified model
-  #local Sp=spkezr(Spacecraft,ET,RefFrame,"LT+S",str(TargetNumber[I],0,0))/AU;
-  PrintVector("Sp: ",Sp)
-  #local Ss=spkezr("SUN"     ,ET,RefFrame,"LT+S",str(TargetNumber[I],0,0))/AU;
-  PrintVector("Ss: ",Ss)
-  #local theta=vangle(Sp,Ss);
-  PrintNumber("theta: ",degrees(theta))
-  #local p=2/3*((1-theta/pi)*cos(theta)+1/pi*sin(theta));
-  PrintNumber("p: ",p)
-  #local m=H[I]+2.5*log(pow(vlength(Ss),2)*pow(vlength(Sp),2)/(p*pow(1,4)));
-  PrintNumber("m: ",m)
+    #local Sp=spkezr(Spacecraft,ET,RefFrame,"LT+S",str(SpiceTarget[I],0,0))/AU;
+    PrintVector("Sp: ",Sp)
+    #local Ss=spkezr("SUN"     ,ET,RefFrame,"LT+S",str(SpiceTarget[I],0,0))/AU;
+    PrintVector("Ss: ",Ss)
+    #local theta=vangle(Sp,Ss);
+    PrintNumber("theta: ",degrees(theta))
+    #local p=2/3*((1-theta/pi)*cos(theta)+1/pi*sin(theta));
+    PrintNumber("p: ",p)
+    #local m=H[I]+2.5*log(pow(vlength(Ss),2)*pow(vlength(Sp),2)/(p*pow(1,4)));
+    PrintNumber("m: ",m)
+  #end
   #local I=I+1;
 #end
 
-#local M=spkezr(str(TargetNumber[Target],0,0),ET,RefFrame,"LT+S",Spacecraft);
+#local M=spkezr(str(SpiceTarget[Target],0,0),ET,RefFrame,"LT+S",Spacecraft);
 
 #declare CamSky=<0,0,1>;
 #declare Vertigo=CloseupVertigo[Target];
@@ -266,7 +265,7 @@ object{InPlaceUranus}
 #declare CamUp=1;
 #declare CamRight=image_width/image_height;
 #declare ObjPos=<-0.15,0,1>;
-#declare ObjAxis=vnormalize(spkezr(str(TargetNumber[Target],0,0),ET,RefFrame,"LT+S",Spacecraft));
+#declare ObjAxis=vnormalize(spkezr(str(SpiceTarget[Target],0,0),ET,RefFrame,"LT+S",Spacecraft));
 #declare ObjHoriz=vnormalize(vcross(ObjAxis,CamSky))*CamTan;
 #declare ObjVert=vnormalize(vcross(ObjHoriz,ObjAxis))*CamTan*CamUp/CamRight;
 #declare CamAxis=ObjAxis-ObjHoriz*ObjPos.x-ObjVert*ObjPos.y;
@@ -299,12 +298,12 @@ object {
   QuatTrans(pxform("J2000",RefFrame,ET),<0,0,0>)
 }
 
-#include "Voyager.inc"
-union {
-  object{VoyagerQSpice(pxform("VG2_SCAN_PLATFORM","VG2_SC_BUS",ETScan))}
-  PrintQuat("VG2_SC_BUS: ",pxform("VG2_SC_BUS",RefFrame,ET))
-  QuatTrans(pxform("VG2_SC_BUS",RefFrame,ET),<0,0,0>)
-}
+//#include "Voyager.inc"
+//union {
+//  object{VoyagerQSpice(pxform("VG2_SCAN_PLATFORM","VG2_SC_BUS",ETScan))}
+//  PrintQuat("VG2_SC_BUS: ",pxform("VG2_SC_BUS",RefFrame,ET))
+//  QuatTrans(pxform("VG2_SC_BUS",RefFrame,ET),<0,0,0>)
+//}
 
 union {
   textHud(etcal(ETScan),<3.6,-4.65>,<1,1,1>,1,-1)
