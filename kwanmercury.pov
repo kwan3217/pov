@@ -1,6 +1,6 @@
 global_settings {max_trace_level 20}
 
-#include "PovSolar/KwanMath.inc"
+#include "KwanMath.inc"
 #macro bound(X,lo,hi)
   (min(hi,max(lo,X)))
 #end
@@ -25,7 +25,7 @@ global_settings {max_trace_level 20}
 #local A=0;
 
 camera{
-  right x*16/9
+  right x*3/2
   sky z 
 	location<6*clock-3,8>
 	look_at 0
