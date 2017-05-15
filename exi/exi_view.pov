@@ -7,15 +7,12 @@ camera {
   up y*1
   right -x*image_width/image_height
   angle 25.39
-//  sky z
-//  location -vnormalize(PlanetPos)*20
-//  look_at PlanetPos
   sky QuatTransV(EXIQ,<0,0,0>,y)
   location <0,0,0>
   look_at QuatTransV(EXIQ,<0,0,0>,z)
 }
 
-
+/*
 union {
   text {
     ttf "courbd.ttf"
@@ -28,20 +25,10 @@ union {
     translate <-0.99,-0.74,1>
     scale <-tan(radians(25.39/2)),tan(radians(25.39/2)),1>
   }
-/*  plane {
-    y,1
-    pigment {checker scale 0.1}
-    finish {ambient 1 diffuse 0}
-  }
-  plane {
-    y,0.99999
-    pigment {checker color rgb <1,1,0> color rgbf <1,1,1,1> scale 0.01}
-    finish {ambient 1 diffuse 0}
-  }*/
   QuatTrans(EXIQ,<0,0,0>)
   pigment {color rgb <1,1,1>}
   finish {ambient 1 diffuse 0}
   no_shadow
 }
-
+*/
 

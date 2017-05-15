@@ -182,6 +182,21 @@ union {
       rotate -y*25.39/2
     }
   }
+  text {
+    ttf "courbd.ttf"
+    timout(ET,"YYYY-MM-DDTHR:MN:SC UTC ::UTC") 0 0
+    //In this scale, 1 unit is half the screen width
+    #ifndef(TimestampSize)
+      #declare TimestampSize=0.025;
+    #end
+    scale TimestampSize
+    //In this, X is from -1 (left edge) to 1 (right edge)
+    //         Y is from -h/w (bottom edge) to h/w (top edge)
+    translate <-0.99,-0.74,1>
+    //Now scale to fit inside of actual field of view
+    scale <-tan(radians(25.39/2)),tan(radians(25.39/2)),1>
+    pigment {color rgb <1,1,1>}
+  }
   scale vlength(PlanetPos)/2
   QuatTrans(EXIQ,<0,0,0>)
   finish {ambient 1 diffuse 0}
