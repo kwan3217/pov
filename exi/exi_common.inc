@@ -7,6 +7,8 @@
 #furnsh "emm_20161205_nominal.tm"
 #include "emm_spacecraft.inc"
 
+#declare EXI_FOV=25.39;
+#declare EXI_FOV_vert=2*degrees(atan(image_height/image_width*tan(radians(EXI_FOV/2))));
 //Planet model
 
 #declare SpiceTarget=array[1] {499}
@@ -92,12 +94,25 @@ object {
   QuatTrans(pxform("J2000",RefFrame,ET),<0,0,0>)
 }
 
+#macro Ring(major,minor)
+  cylinder {
+    -y*minor,y*minor,major
+    open
+  }
+/*
+  torus {
+    major,minor
+    sturm
+  }
+*/
+#end
+
 union {
   #local I=0;
-  #local LineWeight=0.0005;
+  #local LineWeight=0.0001*(4096/image_width);
   #while(I<24)
-    torus {
-      1,LineWeight
+    object {
+      Ring(1,LineWeight)
       rotate 15*I*z
     }
     #local J=1;
@@ -106,7 +121,7 @@ union {
         ttf "courbd.ttf"
         concat(str(I*15,0,0),",",str(15*J-90,0,0)) 0 0
         rotate x*90
-        scale 0.01
+        scale 0.002*(4096/image_width)
         translate y
         rotate (15*J-90)*x
         rotate (15*I-90)*z
@@ -117,8 +132,8 @@ union {
   #end
   #local J=1;
   #while(J<12)
-    torus {
-      cos(radians(15*J-90)),LineWeight
+    object {
+      Ring(cos(radians(15*J-90)),LineWeight)
       rotate x*90
       translate z*sin(radians(15*J-90))
     }
@@ -134,56 +149,56 @@ union {
 union {
   intersection {
     union {
-      torus {
+      object {
         //Left edge, red
-        1,LineWeight*2
+        Ring(1,LineWeight*2)
         rotate z*90
-        rotate y*25.39/2
+        rotate y*EXI_FOV/2
         finish {ambient 1 diffuse 0}
         pigment {color rgb <1,0,0>}
       }
-      torus {
+      object {
         //Right edge, antired (cyan)
-        1,LineWeight*2
+        Ring(1,LineWeight*2)
         rotate z*90
-        rotate -y*25.39/2
+        rotate -y*EXI_FOV/2
         finish {ambient 1 diffuse 0}
         pigment {color rgb <0,1,1>}
       }
     }
     plane {
       -y,0
-      rotate x*25.39/2*3/4
+      rotate x*EXI_FOV_vert/2
     }
     plane {
       y,0
-      rotate -x*25.39/2*3/4
+      rotate -x*EXI_FOV_vert/2
     }
   }
   intersection {
     union {
-      torus {
+      object {
         //Top edge, green
-        1,LineWeight*2
-        rotate x*25.39/2*3/4
+        Ring(1,LineWeight*2)
+        rotate x*EXI_FOV_vert/2
         finish {ambient 1 diffuse 0}
         pigment {color rgb <1,0,1>}
       }
-      torus {
+      object {
         //Bottom edge, antigreen (magenta)
-        1,LineWeight*2
-        rotate -x*25.39/2*3/4
+        Ring(1,LineWeight*2)
+        rotate -x*EXI_FOV_vert/2
         finish {ambient 1 diffuse 0}
         pigment {color rgb <0,1,0>}
       }
     }
     plane {
       x,0
-      rotate y*25.39/2
+      rotate y*EXI_FOV/2
     }
     plane {
       -x,0
-      rotate -y*25.39/2
+      rotate -y*EXI_FOV/2
     }
   }
   text {
@@ -191,14 +206,14 @@ union {
     timout(ET,"YYYY-MM-DDTHR:MN:SC UTC ::UTC") 0 0
     //In this scale, 1 unit is half the screen width
     #ifndef(TimestampSize)
-      #declare TimestampSize=0.025;
+      #declare TimestampSize=0.005*(4096/image_width);
     #end
     scale TimestampSize
     //In this, X is from -1 (left edge) to 1 (right edge)
     //         Y is from -h/w (bottom edge) to h/w (top edge)
     translate <-0.99,-0.74,1>
     //Now scale to fit inside of actual field of view
-    scale <-tan(radians(25.39/2)),tan(radians(25.39/2)),1>
+    scale <-tan(radians(EXI_FOV/2)),tan(radians(EXI_FOV/2)),1>
     finish {ambient 1 diffuse 0}
     pigment {color rgb <1,1,1>}
   }
