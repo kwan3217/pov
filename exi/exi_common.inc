@@ -139,6 +139,7 @@ union {
         1,LineWeight*2
         rotate z*90
         rotate y*25.39/2
+        finish {ambient 1 diffuse 0}
         pigment {color rgb <1,0,0>}
       }
       torus {
@@ -146,6 +147,7 @@ union {
         1,LineWeight*2
         rotate z*90
         rotate -y*25.39/2
+        finish {ambient 1 diffuse 0}
         pigment {color rgb <0,1,1>}
       }
     }
@@ -164,12 +166,14 @@ union {
         //Top edge, green
         1,LineWeight*2
         rotate x*25.39/2*3/4
+        finish {ambient 1 diffuse 0}
         pigment {color rgb <1,0,1>}
       }
       torus {
         //Bottom edge, antigreen (magenta)
         1,LineWeight*2
         rotate -x*25.39/2*3/4
+        finish {ambient 1 diffuse 0}
         pigment {color rgb <0,1,0>}
       }
     }
@@ -195,11 +199,11 @@ union {
     translate <-0.99,-0.74,1>
     //Now scale to fit inside of actual field of view
     scale <-tan(radians(25.39/2)),tan(radians(25.39/2)),1>
+    finish {ambient 1 diffuse 0}
     pigment {color rgb <1,1,1>}
   }
   scale vlength(PlanetPos)/2
   QuatTrans(EXIQ,<0,0,0>)
-  finish {ambient 1 diffuse 0}
   no_shadow
 }
 
