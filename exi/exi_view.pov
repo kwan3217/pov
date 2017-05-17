@@ -10,6 +10,8 @@ camera {
   PrintVector("Right: ",Right)
   PrintNumber("FoV:   ",EXI_FOV)
   PrintNumber("Dir:   ",0.5*vlength(Right)/tan(radians(EXI_FOV/2)))
+  PrintNumber("FoVV:  ",EXI_FOV_vert)
+  PrintNumber("FoVn:  ",EXI_FOV*3/4)
   up Up
   right Right
   angle EXI_FOV
