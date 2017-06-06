@@ -99,15 +99,9 @@ object {
     -y*minor,y*minor,major
     open
   }
-/*
-  torus {
-    major,minor
-    sturm
-  }
-*/
 #end
 
-union {
+#declare SkyGrid=union {
   #local I=0;
   #local LineWeight=0.0001*(4096/image_width);
   #while(I<24)
@@ -146,59 +140,63 @@ union {
   no_shadow
 }
 
-union {
-  intersection {
-    union {
-      object {
-        //Left edge, red
-        Ring(1,LineWeight*2)
-        rotate z*90
-        rotate y*EXI_FOV/2
-        finish {ambient 1 diffuse 0}
-        pigment {color rgb <1,0,0>}
-      }
-      object {
-        //Right edge, antired (cyan)
-        Ring(1,LineWeight*2)
-        rotate z*90
-        rotate -y*EXI_FOV/2
-        finish {ambient 1 diffuse 0}
-        pigment {color rgb <0,1,1>}
-      }
+#declare ViewFrame=union {
+  union {
+    object {
+      //Left edge, red
+      Ring(1,LineWeight*2)
+      rotate z*90
+      rotate y*EXI_FOV/2
+      finish {ambient 1 diffuse 0}
+      pigment {color rgb <1,0,0>}
     }
-    plane {
-      -y,0
-      rotate x*EXI_FOV_vert/2
+    object {
+      //Right edge, antired (cyan)
+      Ring(1,LineWeight*2)
+      rotate z*90
+      rotate -y*EXI_FOV/2
+      finish {ambient 1 diffuse 0}
+      pigment {color rgb <0,1,1>}
     }
-    plane {
-      y,0
-      rotate -x*EXI_FOV_vert/2
+    clipped_by {
+      intersection {
+        plane {
+          -y,0
+          rotate x*EXI_FOV_vert/2
+        }
+        plane {
+          y,0
+          rotate -x*EXI_FOV_vert/2
+        }
+      }
     }
   }
-  intersection {
-    union {
-      object {
-        //Top edge, green
-        Ring(1,LineWeight*2)
-        rotate x*EXI_FOV_vert/2
-        finish {ambient 1 diffuse 0}
-        pigment {color rgb <1,0,1>}
-      }
-      object {
-        //Bottom edge, antigreen (magenta)
-        Ring(1,LineWeight*2)
-        rotate -x*EXI_FOV_vert/2
-        finish {ambient 1 diffuse 0}
-        pigment {color rgb <0,1,0>}
-      }
+  union {
+    object {
+      //Top edge, green
+      Ring(1,LineWeight*2)
+      rotate x*EXI_FOV_vert/2
+      finish {ambient 1 diffuse 0}
+      pigment {color rgb <1,0,1>}
     }
-    plane {
-      x,0
-      rotate y*EXI_FOV/2
+    object {
+      //Bottom edge, antigreen (magenta)
+      Ring(1,LineWeight*2)
+      rotate -x*EXI_FOV_vert/2
+      finish {ambient 1 diffuse 0}
+      pigment {color rgb <0,1,0>}
     }
-    plane {
-      -x,0
-      rotate -y*EXI_FOV/2
+    clipped_by {
+      intersection {
+        plane {
+          x,0
+          rotate y*EXI_FOV/2
+        }
+        plane {
+          -x,0
+          rotate -y*EXI_FOV/2
+        }
+      }
     }
   }
   text {
@@ -219,9 +217,8 @@ union {
   }
   scale vlength(PlanetPos)/2
   QuatTrans(EXIQ,<0,0,0>)
-  no_shadow
+//  no_shadow
 }
-
 
 light_source {
   spkezr("SUN",ET,RefFrame,"LT+S",Spacecraft)
@@ -241,5 +238,3 @@ sphere {
 }
 
 Spherical(499,"Mars",<1,0,0>,pxform("IAU_MARS",RefFrame,ET),spkezr("MARS",ET,RefFrame,"LT+S",Spacecraft))
-
-
