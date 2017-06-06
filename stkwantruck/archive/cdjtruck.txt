@@ -1,0 +1,68 @@
+TITLE: Trucks in Space
+NAME: Chris Jeppesen
+COUNTRY: USA
+EMAIL: chrisj@digiquill.com
+TOPIC: Toys
+COPYRIGHT: I SUBMIT TO THE STANDARD RAYTRACING COMPETITION COPYRIGHT.
+MPGFILE: cdjtruck.mpg
+ZIPFILE: cdjtruck.zip
+RENDERER USED: 
+    POV-Ray for Windows v3.02
+
+TOOLS USED: 
+
+  Xing MPEG encoder Trial Version
+  GALAXY.INC from Chris Colefax, ccolefax@geocities.com
+
+CREATION TIME: 
+
+  about 4 days of human time
+  Final render time: 6 hours 30 minutes 12 seconds
+
+
+HARDWARE USED: 
+
+  AMD K6 266MHz w/ 128MB RAM
+
+
+ANIMATION DESCRIPTION: 
+
+  This is dedicated to my teacher, Mr Peddicord, and all my classmates
+in CIS420, Southern Oregon University.
+  Mr. Peddicord came back from a week's trip to Arizona, and told us all
+about it. He told us about a strip mine he went to, where they use some
+of the World's Biggest Dump Trucks to haul the ore. Then he told us all
+to render a picture of a dump truck in POV.
+  One day in computer imaging class, I walk into class and Mr. Peddicord
+says, "Everyone take out a piece of paper and draw a neutron star being 
+sucked into a black hole." Then he told us to render a dump truck in C++.
+  I was getting sick and tired of dump trucks, so I decided to put together
+the two ideas, and my own destructive attitude when it comes to toys. I 
+remember I had an old yellow Zonka(tm) truck I used to play with in the 
+sand pile. The most fun thing to do was to push it really fast and roll it
+over a hill onto its side. Or drop it from the top of the slide and watch
+it bounce. A lot of things that could never happen with a real dump truck.
+  So, trucks in space. My toy dump truck boldly going where no dumptruck has
+gone before. And probably never will. I think in the entire history of the
+universe, this has never happened and never will.
+
+
+VIEWING RECOMMENDATIONS: 
+
+  Any old MPEG player should work, preferrably run it at 10-15 fps
+
+
+DESCRIPTION OF HOW THIS ANIMATION WAS CREATED: 
+
+  Everything you see is CSG. Mo modeller was used.I modelled the 
+truck first, got it how I like. Then I made some backgrounds for the 
+truck to tumble through.
+  The Red Giant is a halo, the stars and background is from GALAXY.INC
+The animation is in four .POV files, one each for each scene. The truck
+is in it's own .INC file. There is nothing too technically spectacular here.
+
+No dump trucks were harmed in the making of this movie.
+
+
+
+
