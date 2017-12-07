@@ -2,6 +2,8 @@
 #include "exi_common.inc"
 
 //object {EMM_Spacecraft QuatTrans(SCQ,<0,0,0>)}
+object {SkyGrid}
+object {ViewFrame}
 
 camera {
   #declare Up=y*1;

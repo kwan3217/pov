@@ -3,7 +3,7 @@
 //You may use and modify this as you see fit for any non-commercial purpose
 //otherwise contact me at chrisj@digiquill.com
 //Chris Jeppesen - 18 Oct 1999
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
 
 /*Usage*************************\
 object {

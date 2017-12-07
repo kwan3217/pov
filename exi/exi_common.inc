@@ -4,7 +4,7 @@
 #declare LimitMag=3;
 #include "StarsRight.inc"
 //#furnsh "generic/generic.tm"
-#furnsh "emm_20161205_nominal.tm"
+#furnsh "emm_20161205_eventmatchup.tm"
 #include "emm_spacecraft.inc"
 
 #declare EXI_FOV=25.39;
@@ -74,14 +74,16 @@
   }
 #end
 
-#declare ET0=str2et("2021-05-02 17:00:00.000 UTC");
+#declare ET0=str2et("2021-11-02 10:43:09.856 UTC");
 PrintNumber("ET0: ",ET0)
-PrintNumber(concat("ET0: ",etcal(ET0)," "),ET0)
+PrintNumber(concat("ET0:  ",etcal(ET0)," "),ET0)
+PrintNumber(concat("UTC0: ",timout(ET0,"YYYY-MM-DDTHR:MN:SC.##Z ::UTC")," "),ET0)
 #declare ET1=ET0+3600*4;
 PrintNumber(concat("ET1: ",etcal(ET1)," "),ET1)
 
 #declare ET=Linterp(initial_clock,ET0,final_clock,ET1,clock);
 PrintNumber(concat("ET: ",etcal(ET)," "),ET)
+PrintNumber(concat("UTC: ",timout(ET,"YYYY-MM-DDTHR:MN:SC.##Z ::UTC")," "),ET)
 #declare SCQ=pxform("HOPE_SPACECRAFT",RefFrame,ET);
 #declare EXIQ=pxform("HOPE_EXI_VIS",RefFrame,ET);
 #declare PlanetPos=spkezr("MARS",ET,RefFrame,"LT+S",Spacecraft);
