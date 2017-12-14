@@ -3,7 +3,7 @@
 #declare StarRad=2000*1024/image_width; //Gives 500 radius at width 1024, proportionally less for proportionally higher resolution
 #declare LimitMag=3;
 #include "StarsRight.inc"
-
+//#furnsh "generic/generic.tm"
 #furnsh "Ranger7.tm"
 #include "Ranger_spacecraft.inc"
 
@@ -43,14 +43,14 @@
           interpolate 4
         }
         rotate x*90
-//        rotate z*180
+        rotate z*180
         scale <1,-1,1>
       }
     #else
       #debug concat("Map ",MapName," Not Found, using base color\n")
       pigment {color Color}
     #end
-    finish {ambient 1 #ifdef(Diffuse) diffuse Diffuse #end brilliance Brilliance}
+    finish {ambient 0 #ifdef(Diffuse) diffuse Diffuse #end brilliance Brilliance}
     scale PlA
   }
 #end
@@ -71,41 +71,65 @@
   }
 #end
 
-#declare ET0=str2et("1964 JUL 31 13:09:28 TDB");
+#declare ET0=str2et("1964 JUL 28 17:20:32 TDB");
 PrintNumber("ET0: ",ET0)
 PrintNumber(concat("ET0:  ",etcal(ET0)," "),ET0)
-#declare ET1=str2et("1964 JUL 31 13:26:24.123 TDB");;
+#declare ET1=str2et("1964 JUL 31 13:26:24 TDB");;
 PrintNumber(concat("ET1: ",etcal(ET1)," "),ET1)
 
-#declare ET=Linterp(initial_clock,ET0,final_clock,ET1,clock);
-PrintNumber(concat("ET:  ",etcal(ET )," "),ET)
-#declare PlanetPos=spkezr(     "399",ET,RefFrame,"LT+S",Spacecraft);
-PrintVector("PlanetPos: ",PlanetPos)
-#declare MoonVel=<0,0,0>;
-#declare MoonPos  =spkezr(     "301",ET,RefFrame,"LT+S",Spacecraft,MoonVel);
-PrintVector("MoonPos: ",MoonPos)
-#declare SunPos   =spkezr(     "SUN",ET,RefFrame,"LT+S",Spacecraft);
-PrintVector("SunPos: ",SunPos)
-#declare ScPos    =spkezr(Spacecraft,ET,RefFrame,"LT+S",Spacecraft);
-#declare ScVel=-MoonVel;
-PrintVector("ScPos: ",ScPos)
-PrintVector("ScVel: ",ScVel)
+#declare ET=ET0;
+#declare OldET=ET;
+#declare ScRad=50;
+#declare DeltaET=clock_delta*(ET1-ET0);
+#declare ETLim=Linterp(initial_clock,ET0,final_clock,ET1,clock)+DeltaET;
 
-union {
+#while(ET<ETLim)
+  PrintNumber(concat("ET: ",etcal(ET)," "),ET)
+  //#declare SCQ=pxform("-1007",RefFrame,ET);
+  //#declare EXIQ=pxform("HOPE_EXI_VIS",RefFrame,ET);
+  #declare PlanetPos=<0,0,0>;
+  #declare MoonPos  =spkezr(     "301",ET,RefFrame,"NONE","399");
+  #declare ScPos    =spkezr(Spacecraft,ET,RefFrame,"NONE","399");
+  sphere {
+    ScPos,ScRad
+    pigment {color rgb <0,1,0>}
+  }
+  sphere {
+    MoonPos,ScRad    
+    pigment {color rgb <0.5,0.5,0.5>}
+  }
+
+  #if(OldET!=ET)
+    cylinder {
+      OldScPos,ScPos,ScRad
+      pigment {color rgb <0,1,0>}
+    }
+    cylinder {
+      OldMoonPos,MoonPos,ScRad    
+      pigment {color rgb <0.5,0.5,0.5>}
+    }
+  #end
+
+  #declare OldMoonPos=MoonPos;
+  #declare OldScPos=ScPos;
+  #declare OldET=ET;
+  #declare ET=ET+DeltaET;
+  #if(ET>ETLim)
+    #declare ET=ETLim;
+  #end
+#end
+
 light_source {
-  SunPos
+  spkezr(     "SUN",ET,RefFrame,"NONE","399")
   color rgb <1,1,1>*1.5
 }
-
 Spherical(399,"Earth",<0.0,0.0,1.0>,pxform("IAU_EARTH",RefFrame,ET),PlanetPos)
 Spherical(301,"Moon" ,<0.5,0.5,0.5>,pxform("IAU_MOON" ,RefFrame,ET),MoonPos  )
-scale 0.001
-}
 camera {
   up y
   right -x*image_width/image_height
-  sky z
-  location ScPos
-  look_at ScVel
-  angle 25
+  location PlanetPos+<0,0,5e5>
+  look_at PlanetPos
+  sky y
+  angle 5
 }
