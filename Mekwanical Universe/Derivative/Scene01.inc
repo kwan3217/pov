@@ -1,4 +1,4 @@
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
 
 #include "Actors.inc"
 
@@ -8,12 +8,8 @@ CalcShotTime(ShotTime)
 
 #switch(Shot)
   #case(0) //Title card
-    text {
-      ttf "verdana.ttf" 
-      "Part 1 - Slope" 0 0
-      h_align_center
-      rotate -y*90
-      rotate -z*90
+    union {
+      Text("verdana.ttf","Part 1 - Slope",0,Center)
       translate <0,-0.001,1>
       Fade(<0.1,0.1,0.1,0>,ASDR(0,0.25,0.75,1,0,1,ShotClockN))
     }
@@ -351,7 +347,8 @@ plane {
 
 
 camera {
-  right x*16/9
+  up y
+  right -x*16/9
   sky z
   location <0,-9,0.5>
   look_at <0,0,0.5>

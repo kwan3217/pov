@@ -1,4 +1,26 @@
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
+
+#declare Left=0.0;
+#declare Right=1.0;
+#declare Center=0.5;
+
+#macro Text(Font,String,Thick,Align)
+  #local TextObj=text {
+     ttf Font String Thick 0
+    //Rotate and reflect so that text object is:
+    //Baseline: Sits on +X axis
+    //Ascent: Up +Y axis
+    //Thickness: Text object extends from 0 to Thick in the +Z direction
+    rotate x*90
+//    translate -2*y*Thick
+  }
+  #local MinX=min_extent(TextObj);
+  #local MaxX=max_extent(TextObj);
+  object {
+    TextObj
+    translate -x*Align*(MaxX.x-MinX.x)
+  }
+#end
 
 #declare Protractor=union {
   difference {
@@ -23,11 +45,8 @@
       pigment {color rgb 0.1}
     }
     #if(mod(I,10)=0)
-      text {
-        ttf "verdana.ttf" str(abs(I),3,0) 0.001 0
-        h_align_center
-        rotate -y*90
-        rotate -z*90
+      union {
+        Text("verdana.ttf",str(abs(I),3,0),0.001,Center)
         translate -y*0.061
         scale <0.2,1,0.2>
         rotate y*90
@@ -68,11 +87,8 @@
           translate x*I/10
         }
         #if(mod(I,10)=0)
-          text {
-            ttf "verdana.ttf" str(abs(I/10),1,0) 0.001 0
-            h_align_center
-            rotate -y*90
-            rotate -z*90
+          union {
+            Text("verdana.ttf",str(abs(I/10),1,0),0.001,Center)
             scale <0.3,1,0.3>
             translate <I/10,-0.061,-0.6>
           }
@@ -90,23 +106,15 @@
 }
 
 #macro Display(V,W,Tag,TagColor,Number,NumberColor,L,F,FadeN)
-  text {
-    ttf "verdana.ttf" 
-    Tag 0 0
-    h_align_left
+  union {
+    Text("verdana.ttf",Tag,0,Left)
     scale 0.4
-    rotate -y*90
-    rotate -z*90
     translate V-0.03*y
     Fade(TagColor,FadeN)
   }
-  text {
-    ttf "lucon.ttf" 
-    str(Number,L,F) 0 0
-    h_align_right
+  union {
+    Text("lucon.ttf",str(Number,L,F),0,Right)
     scale 0.4
-    rotate -y*90
-    rotate -z*90
     translate V+<W,-0.03,0>
     Fade(NumberColor,FadeN)
   }

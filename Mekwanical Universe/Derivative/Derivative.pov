@@ -1,9 +1,9 @@
-#version unofficial Megapov 1.22;
+//#version unofficial Megapov 1.22;
 
 #include "KwanMath.inc"
 
 global_settings {
-  right_handed
+//  right_handed
   charset utf8
 }
 
