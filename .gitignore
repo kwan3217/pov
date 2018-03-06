@@ -6,7 +6,7 @@
 *.ogg
 Memory.Log
 *.log
-Frames
+Frames/*
 *.png
 ffmpeg2pass*
 *.xmp
