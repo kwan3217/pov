@@ -1,8 +1,8 @@
 #include "KwanMath.inc"
 #include "SpiceQuat.inc"
-#declare StarRad=2000*1024/image_width; //Gives 500 radius at width 1024, proportionally less for proportionally higher resolution
-#declare LimitMag=3;
-#include "StarsRight.inc"
+//#declare StarRad=2000*1024/image_width; //Gives 500 radius at width 1024, proportionally less for proportionally higher resolution
+//#declare LimitMag=3;
+//#include "StarsRight.inc"
 
 #furnsh "Ranger7.tm"
 #include "Ranger_spacecraft.inc"
@@ -17,7 +17,8 @@
 
 #declare DefaultBrilliance=0.75;
 #declare Brilliance=DefaultBrilliance;
-#macro SphTex(ShapeNum,ShapeName,Color)
+#declare Diffuse=1;
+#macro SphTex(ShapeNum,ShapeName,Color,RotateZ)
   #local PlA=gdpool(concat("BODY",str(ShapeNum,0,0),"_RADII"),0);
   #local PlB=gdpool(concat("BODY",str(ShapeNum,0,0),"_RADII"),2);
   texture {
@@ -43,14 +44,14 @@
           interpolate 4
         }
         rotate x*90
-//        rotate z*180
+        rotate z*RotateZ
         scale <1,-1,1>
       }
     #else
       #debug concat("Map ",MapName," Not Found, using base color\n")
       pigment {color Color}
     #end
-    finish {ambient 1 #ifdef(Diffuse) diffuse Diffuse #end brilliance Brilliance}
+    finish {ambient 0 #ifdef(Diffuse) diffuse Diffuse #end brilliance Brilliance}
     scale PlA
   }
 #end
@@ -63,10 +64,10 @@
     scale PlA
   }
 #end
-#macro Spherical(ShapeNum,ShapeName,Color,Q,R)  
+#macro Spherical(ShapeNum,ShapeName,Color,Q,R,RotateZ)  
   object {
     SphBody(ShapeNum,ShapeName,Color)
-    SphTex(ShapeNum,ShapeName,Color)
+    SphTex(ShapeNum,ShapeName,Color,RotateZ)
     QuatTrans(Q,R)
   }
 #end
@@ -92,14 +93,19 @@ PrintVector("ScPos: ",ScPos)
 PrintVector("ScVel: ",ScVel)
 
 union {
-light_source {
-  SunPos
-  color rgb <1,1,1>*1.5
-}
+  light_source {
+    SunPos
+    color rgb <1,1,1>*1.5
+  }
 
-Spherical(399,"Earth",<0.0,0.0,1.0>,pxform("IAU_EARTH",RefFrame,ET),PlanetPos)
-Spherical(301,"Moon" ,<0.5,0.5,0.5>,pxform("IAU_MOON" ,RefFrame,ET),MoonPos  )
-scale 0.001
+//  Spherical(399,"Earth",<0.0,0.0,1.0>,pxform("IAU_EARTH",RefFrame,ET),PlanetPos,0)
+  Spherical(301,"Moon" ,<0.5,0.5,0.5>,pxform("IAU_MOON" ,RefFrame,ET),MoonPos,180  )
+//  scale 0.001
+/*  sphere {
+    ScPos,50
+    pigment {color rgb <0,1,0>}
+  }
+*/
 }
 camera {
   up y
@@ -107,5 +113,5 @@ camera {
   sky z
   location ScPos
   look_at ScVel
-  angle 25
+  angle 20
 }

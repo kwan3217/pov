@@ -3,7 +3,7 @@
 #declare StarRad=2000*1024/image_width; //Gives 500 radius at width 1024, proportionally less for proportionally higher resolution
 #declare LimitMag=3;
 #include "StarsRight.inc"
-//#furnsh "generic/generic.tm"
+
 #furnsh "Ranger7.tm"
 #include "Ranger_spacecraft.inc"
 
