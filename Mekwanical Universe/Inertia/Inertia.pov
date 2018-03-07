@@ -10,8 +10,8 @@ global_settings {
 #declare fps=24;
 PrintNumber("Frames/sec: ",fps)
 
-#declare NumScenes=3;
-#declare SceneTime=array[NumScenes] {5,90,15}
+#declare NumScenes=1;
+#declare SceneTime=array[NumScenes] {33}
 
 #declare I=0;
 #declare TotalTime=0;
@@ -118,11 +118,5 @@ PrintNumber("SceneClockN: ",SceneClockN)
 #switch(Scene)
   #case(0)
     #include "Scene00.inc"
-    #break
-  #case(1)
-    #include "Scene01.inc"
-    #break
-  #case(2)
-    #include "Scene02.inc"
     #break
 #end
