@@ -76,3 +76,50 @@
   }
   #end
 #end
+
+#macro Particle(R,V,M,RColor,VColor,LColor,MColor,PColor,FadeR,FadeV,FadeL,FadeM,FadeP)
+  //R - position vector
+  //V - velocity vector
+  //(L) - angular momentum vector, calculated internally
+  //M - radius of point mass
+  //(P) - parallelogram, drawn internally
+  //xColor - RGB components color of part x (where x is R,V,L,M,P)
+  //Fadex  - Fade component of part x (1 is completely opaque, 0 completely transparent)
+  #local L=vcross(R,V);
+  #if((FadeR>0)*(vlength(R)>0))
+    union {
+      Vector(0,R,0.1)
+      pigment {color rgbt RColor+t*(1-FadeR)}
+    }
+  #end
+  #if((FadeV>0)*(vlength(V)>0))
+    union {
+      Vector(R,R+V,0.1)
+      pigment {color rgbt VColor+t*(1-FadeV)}
+    }
+  #end
+  #if((FadeL>0)*(vlength(L)>0))
+    union {
+      Vector(0,L,0.1)
+      pigment {color rgbt LColor+t*(1-FadeL)}
+    }
+  #end
+  #if((FadeM>0)*(M>0))
+    sphere {
+      R,M
+      pigment {color rgbt MColor+t*(1-FadeM)}
+    }
+  #end
+  #if((FadeP>0)*(vlength(L)>0))
+    union {
+      triangle {
+        0,R,R+V
+      }
+      triangle {
+        0,R+V,V
+      }
+      pigment {color rgbt PColor+t*(1-FadeP)}
+    }
+  #end
+#end
+

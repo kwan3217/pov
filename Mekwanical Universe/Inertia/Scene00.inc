@@ -1,7 +1,7 @@
 //#version unofficial Megapov 1.22;
 #include "Actors.inc"
 
-#local ShotTime=array[3] {3,15,15}
+#local ShotTime=array[2] {3,15}
 
 CalcShotTime(ShotTime)
 
@@ -12,14 +12,28 @@ CalcShotTime(ShotTime)
       translate <0,-0.001,1>
       Fade(<1,1,1,0>,ASDR(0,0.25,0.75,1,0,1,ShotClockN))
     }
+    Frame(ShotClockN,1)
+    #break
+  #case(1)
+    #declare R0=<1,2,3>;
+    #declare V=<-1,1,1>;
+    #declare T=Linterp(0,-3,1,3,ShotClockN);
+    #declare F=ASDR(0,0.1,0.9,1,0,1,ShotClockN);
+    Particle(R0+V*T,V,0.2, 
+      <1,1,0>, //RColor
+      <0,1,1>, //VColor
+      <1,0,1>, //LColor
+      <1,0,0>, //MColor
+      <1,0,1>, //PColor
+      F,F,F,F,F*0.3)
+    Frame(1,1)
     #break
 #end
 
-Frame(ShotClockN,1)
 
-#local CameraPanAngle=Linterp(0,-60,1,-120,ShotClockN);
+#local CameraPanAngle=Linterp(0,-60,1,-120,SceneClockN);
 #local CameraR=9;
-#local CameraHeight=Linterp(0,5,1,4,ShotClockN);
+#local CameraHeight=Linterp(0,5,1,4,SceneClockN);
 
 camera {
   up y
