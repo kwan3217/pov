@@ -276,5 +276,31 @@
     c13*V.x+c23*V.y+c33*V.z>)
 #end
 
+#macro Bezier(R0,R1,R2,R3,T)
+  #local B0=   pow(1-T,3);
+  #local B1=-3*pow((1-T),3)+3*pow((1-T),2);
+  #local B2=-3*pow(   T ,3)+3*pow(   T ,2);
+  #local B3=   pow(  T,3);
+  PrintNumber("T:   ",T )
+  PrintNumber("B0:  ",B0)
+  PrintNumber("B1:  ",B1)
+  PrintNumber("B2:  ",B2)
+  PrintNumber("B3:  ",B3)
+  PrintNumber("BS:  ",B0+B1+B2+B3)
+  (B0*R0+B1*R1+B2*R2+B3*R3)
+#end
+
+#macro DBezier(R0,R1,R2,R3,T)
+  #local DB0= 3*pow((1-T),2);
+  #local DB1=-9*pow((1-T),2)+6*(1-T);
+  #local DB2=-9*pow(   T ,2)+6*   T ;
+  #local DB3= 3*pow(   T ,2);
+  PrintNumber("T:   ",T )
+  PrintNumber("DB0: ",DB0)
+  PrintNumber("DB1: ",DB1)
+  PrintNumber("DB2: ",DB2)
+  PrintNumber("DB3: ",DB3)
+  (DB0*R0+DB1*R1+DB2*R2+DB3*R3)
+#end
 
 
