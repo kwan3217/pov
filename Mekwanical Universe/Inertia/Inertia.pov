@@ -11,7 +11,7 @@ global_settings {
 PrintNumber("Frames/sec: ",fps)
 
 #declare NumScenes=1;
-#declare SceneTime=array[NumScenes] {33}
+#declare SceneTime=array[NumScenes] {66}
 
 #declare I=0;
 #declare TotalTime=0;
