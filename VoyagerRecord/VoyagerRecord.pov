@@ -34,13 +34,8 @@
   bezierseg(x0,ax,bx,cx,y0,ay,by,cy,0,1)
 #end
   
-  
-
-#fopen inf "Test2.txt" read  
-
-#declare Engraving= 
-union {
-  union {
+#macro plot(infn)
+#fopen inf infn read  
 #while(defined(inf))
   #read(inf,A1,A2,A3,A4,A5,A6,A7)
   #declare Draw=true;
@@ -76,7 +71,15 @@ union {
     }
   #end
 #end      
-}       
+#end  
+
+
+#declare Engraving= 
+union {
+  union {
+    plot("Test1.txt")
+    plot("Test2.txt")
+  }       
 }
 
 #declare DiskCenter=<(39.9995+554.1426)/2,(537.1304+253.751)/2,0>;
@@ -86,7 +89,7 @@ union {
   DiskCenter,DiskCenter+z*10,DiskRadius
 }
 
-union {
+difference {
   object{Disk}
   object{Engraving}      
   bounded_by {Disk}
@@ -95,9 +98,9 @@ union {
 }
 
 camera {
-  location <50,50,-1000>
-  look_at <50,50,0>   
-  angle 30
+  location <0,0,-1000>
+  look_at <0,0,0>   
+  angle 38
 }
 
 light_source {
