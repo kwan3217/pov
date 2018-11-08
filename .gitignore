@@ -10,6 +10,6 @@ Frames/*
 *.png
 ffmpeg2pass*
 *.xmp
-StarsCache.inc
+Stars*Cache.inc
 salvage
 

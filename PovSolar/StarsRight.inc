@@ -114,7 +114,7 @@
 #macro GetName(N)
   #local S=BrightStarCatalog[N]
   //#warning concat("MagStr: ",substr(S,103,5))
-  concat(substr(S,5,10)," BSC",substr(S,1,4))
+  concat(substr(S,5,10)," HR",substr(S,1,4))
 #end
 
 #local MaxMag=GetMag(0);
@@ -207,17 +207,20 @@
   #local nStars=nStars+1;
 #end
 
-#write(ouf "#declare StarDat=array[",nStars,"][2] {")
+#write(ouf "#declare StarPos=array[",nStars,"]\n")
+#write(ouf "#declare StarColor=array[",nStars,"]\n")
+#write(ouf "#declare StarName=array[",nStars,"]\n")
 #local I=0;
 #while(I<nStars)
   #local Dec=radians(GetDec(I));
   #local RA=radians(GetRA(I));
   #local V=CelestialSphereRad*<cos(Dec)*cos(RA),cos(Dec)*sin(RA),sin(Dec)>;
   #local C=GetColor(I);
-  #write(ouf,"  {<",str(V.x,0,16),",",str(V.y,0,16),",",str(V.z,0,16),">,",C,"}, //",GetName(I),", VMag=",GetMag(I)," Type=",GetSpectralLetter(I),GetSpectralSubtype(I),"\n")
+  #write(ouf,"#declare StarPos[",I,"]=<",str(V.x,0,16),",",str(V.y,0,16),",",str(V.z,0,16),">;\n")
+  #write(ouf,"#declare StarColor[",I,"]=",C,";\n")
+  #write(ouf,"#declare StarName[",I,"]=\"",GetName(I),"\";// VMag=",GetMag(I)," Type=",GetSpectralLetter(I),GetSpectralSubtype(I),"\n")
   #local I=I+1;
 #end
-#write(ouf,"}")
 #fclose ouf
 
 #end
@@ -225,15 +228,30 @@
 #include "StarsRightCache.inc"
 #declare Stars=union {
 #local I=0;
-#while(I<dimension_size(StarDat,1))
+#while(I<dimension_size(StarPos,1))
   sphere {
-    StarDat[I][0],StarRad
+    StarPos[I],StarRad
     no_shadow
     texture {
       finish {ambient 1 diffuse 0 specular 0}
-      pigment {color rgb StarDat[I][1]}
+      pigment {color rgb StarColor[I]}
     }
   }
+/*
+  text {
+     ttf "arial.ttf"
+     StarName[I] 0 0
+     rotate x*90
+     rotate -z*90
+     scale 200
+     translate StarPos[I]/100
+     no_shadow
+     texture {
+       finish {ambient 1 diffuse 0 specular 0}
+       pigment {color rgb (StarColor[I])}
+     }
+  }
+*/
   #local I=I+1;
 #end
 }

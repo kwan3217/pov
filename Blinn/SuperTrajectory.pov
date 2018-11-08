@@ -5,6 +5,7 @@
 #include "SpiceQuat.inc"
 #include "KwanMath.inc"
 
+
 #declare au=150000000; //Approximate km in 1 AU
 #declare TrajFrame="ECLIPB1950";
 #macro DrawTrajectory(body,et0,et1,dt,r,mark_r,mark_texture)
@@ -65,20 +66,72 @@
   }
 #end
 
+//In the following, "frame" means frame from original movie, 
+//https://www.youtube.com/watch?v=wNf9BPTjvYo. This one has a marked frame rate of 29.97f/s and is 2172 frames long, giving a total length of 72.43s
+
+//From original movie:
+//Frame 0-93 is title sequence
+//Frame 94 is high above Solar system (about 115AU), immediately begins move down
+//Frame 504, latitude stops changing
+//Frame 508, distance stops changing
+//Frame 708, Voyager 2 Launch 1977-08-20T14:29:45
+//Frame 712, Voyager 1 Launch 1977-09-05T12:56
+//Frame 862, Voyager 1 at Jupiter, 1979-03-05
+//Frame 896, Voyager 2 at Jupiter, 1979-07-09T22:29:00
+//Frame 1032, Voyager 1 at Saturn, 1980-11-12
+//Frame 1111, Voyager 2 at Saturn, 1981-08-25T03:24:05
+//Frame 1553, Voyager 2 at Uranus, 1986-01-24T17:59:47
+//Frame 1910, Voyager 2 at Neptune, 1989-08-25T03:56:36
+//Frame 1983, start moving back up
+//Frame 2171, end of movie
+
+//The movie does not seem to have a rubber clock. Event times are in 
+//https://docs.google.com/spreadsheets/d/1F3CC-07yCPUcTB1RzHT03rYjxF8WNLfDVGk-truUkG8/edit?usp=sharing
+
+#declare Frame0=94;
+#declare Frame1=708;
+#declare Frame2=1910;
+#declare Frame3=2171;
+#declare et0=str2et("1971-07-03 18:16:09 UTC");
+#declare et1=str2et("1977-08-20 14:29:45 UTC");
+#declare et2=str2et("1989-08-25 03:56:36 UTC");
+#declare et3=str2et("1992-03-31 09:18:17 UTC");
+#declare Frame=Linterp(0,Frame0,1,Frame3,clock);
+#declare et=Linterp(0,et0,1,et3,clock);
 #declare et0=str2et("1972-07-01 00:00:00 TDB"); //Official start of project
 #declare et0_vgr1=str2et("1977-09-06 00:00:00 TDB");
 #declare et0_vgr2=str2et("1977-08-21 00:00:00 TDB");
 #declare et1=str2et("1990-01-01 00:00:00 TDB"); //Official start of Voyager Interstellar Mission
-#declare et=et0+clock*(et1-et0);
+
+#macro Choreograph(frames,values,spds,accs,frame1)
+  #local pos=values[0];
+  #local vel=pos*0;
+  #local frame=0;
+  #local seg=0;
+  #while(frame<frame1)
+    //Check if we have ticked over into the next segment
+    #if(frame>frames[seg])
+      #local seg=seg+1;
+    #end
+    #local frame=frame+1;
+  #end
+#end
 
 #declare CamAngle=45.9;
 #declare CamUpDenom=2.96;
 PrintNumber("ImWidth:     ",image_width)
 PrintNumber("ImHeight:    ",image_height)
 PrintNumber("CamAngle:    ",CamAngle)
+#declare vg2_vel=<0,0,0>;
+#declare vg2_pos=spkezr("-32",max(et,et0_vgr2),TrajFrame,"NONE","0",vg2_vel);
+#declare CamLatFrame=array[4] {94,504,1983,2171}
+#declare CamLatValue=array[4] {89,25.1,25.1,89}
+#declare CamLatMaxSpd=array[4] {1,1,1,1}
+#declare CamLatMaxAcc=array[4] {0.1,0.1,0.1,0.1}
 #declare CamLat=radians(25.1);
 PrintNumber("CamLat(deg): ",degrees(CamLat))
-#declare CamLon=radians(-35.56);
+#declare CamLon=atan2(-vg2_vel.y,-vg2_vel.x);
+//#declare CamLon=radians(-35.56);
 PrintNumber("CamLon(deg): ",degrees(CamLon))
 //#declare CamLook=<0.28,-0.15,0>;
 #declare CamLook=spkezr("-32",max(et,et0_vgr2),TrajFrame,"NONE","0")/au;
@@ -88,7 +141,7 @@ PrintVector("CamLook:     ",CamLook)
 PrintNumber("CamDist:     ",CamDist)
 #declare etExtraZ0=str2et("1973-07-01 00:00:00 TDB");
 #declare etExtraZ1=str2et("1975-07-01 00:00:00 TDB");
-#declare ExtraZ=BLinterp(etExtraZ0,100,etExtraZ1,0,et);
+#declare ExtraZ=ASDR(94,504,1983,2171,100,0,Frame);
 #declare CamLoc=CamLook+<cos(CamLat)*cos(CamLon),cos(CamLat)*sin(CamLon),sin(CamLat)>*CamDist+ExtraZ*z;
 PrintVector("CamLoc:      ",CamLoc)
 #declare CamSky=z; //Use the Z axis of ECLIPB1950 as the sky, but express it in J2000 so we can use J2000 coords for sky and planets
