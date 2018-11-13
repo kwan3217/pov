@@ -96,26 +96,12 @@
 #declare et1=str2et("1977-08-20 14:29:45 UTC");
 #declare et2=str2et("1989-08-25 03:56:36 UTC");
 #declare et3=str2et("1992-03-31 09:18:17 UTC");
-#declare Frame=Linterp(0,Frame0,1,Frame3,clock);
-#declare et=Linterp(0,et0,1,et3,clock);
-#declare et0=str2et("1972-07-01 00:00:00 TDB"); //Official start of project
 #declare et0_vgr1=str2et("1977-09-06 00:00:00 TDB");
 #declare et0_vgr2=str2et("1977-08-21 00:00:00 TDB");
-#declare et1=str2et("1990-01-01 00:00:00 TDB"); //Official start of Voyager Interstellar Mission
+#declare Frame=Linterp(0,Frame0,1,Frame3,clock);
+#declare et=Linterp(0,et0,1,et3,clock);
 
-#macro Choreograph(frames,values,spds,accs,frame1)
-  #local pos=values[0];
-  #local vel=pos*0;
-  #local frame=0;
-  #local seg=0;
-  #while(frame<frame1)
-    //Check if we have ticked over into the next segment
-    #if(frame>frames[seg])
-      #local seg=seg+1;
-    #end
-    #local frame=frame+1;
-  #end
-#end
+#include "cam_headings.inc"
 
 #declare CamAngle=45.9;
 #declare CamUpDenom=2.96;
@@ -128,21 +114,22 @@ PrintNumber("CamAngle:    ",CamAngle)
 #declare CamLatValue=array[4] {89,25.1,25.1,89}
 #declare CamLatMaxSpd=array[4] {1,1,1,1}
 #declare CamLatMaxAcc=array[4] {0.1,0.1,0.1,0.1}
-#declare CamLat=radians(25.1);
+#declare CamLat=radians(ASDR(94,504,1983,2171,88,25.1,Frame));
 PrintNumber("CamLat(deg): ",degrees(CamLat))
-#declare CamLon=atan2(-vg2_vel.y,-vg2_vel.x);
+//#declare CamLon=atan2(-vg2_vel.y,-vg2_vel.x);
 //#declare CamLon=radians(-35.56);
+#declare CamLon=radians(cam_headings[Frame]);
 PrintNumber("CamLon(deg): ",degrees(CamLon))
 //#declare CamLook=<0.28,-0.15,0>;
 #declare CamLook=spkezr("-32",max(et,et0_vgr2),TrajFrame,"NONE","0")/au;
-#declare CamLook=<CamLook.x,CamLook.y,0>; //Force into equatorial plane
+#declare CamLookZ=spkezr("-32",et2,TrajFrame,"NONE","0")/au;
+#if(et>et2)
+  #declare CamLook=<CamLook.x,CamLook.y,CamLookZ.z>; //Don't follow on dive below ecliptic plane
+#end
 PrintVector("CamLook:     ",CamLook)
-#declare CamDist=3.655;
+#declare CamDist=3.655+ASDR(94,504,1983,2171,100,0,Frame);
 PrintNumber("CamDist:     ",CamDist)
-#declare etExtraZ0=str2et("1973-07-01 00:00:00 TDB");
-#declare etExtraZ1=str2et("1975-07-01 00:00:00 TDB");
-#declare ExtraZ=ASDR(94,504,1983,2171,100,0,Frame);
-#declare CamLoc=CamLook+<cos(CamLat)*cos(CamLon),cos(CamLat)*sin(CamLon),sin(CamLat)>*CamDist+ExtraZ*z;
+#declare CamLoc=CamLook+<cos(CamLat)*cos(CamLon),cos(CamLat)*sin(CamLon),sin(CamLat)>*CamDist;
 PrintVector("CamLoc:      ",CamLoc)
 #declare CamSky=z; //Use the Z axis of ECLIPB1950 as the sky, but express it in J2000 so we can use J2000 coords for sky and planets
 PrintVector("CamSky:      ",CamSky)
