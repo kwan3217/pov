@@ -114,6 +114,7 @@ PrintNumber("CamAngle:    ",CamAngle)
 #declare CamLatValue=array[4] {89,25.1,25.1,89}
 #declare CamLatMaxSpd=array[4] {1,1,1,1}
 #declare CamLatMaxAcc=array[4] {0.1,0.1,0.1,0.1}
+#declare CamLatSpline=
 #declare CamLat=radians(ASDR(94,504,1983,2171,88,25.1,Frame));
 PrintNumber("CamLat(deg): ",degrees(CamLat))
 //#declare CamLon=atan2(-vg2_vel.y,-vg2_vel.x);
