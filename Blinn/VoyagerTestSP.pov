@@ -14,7 +14,7 @@ camera {
   orthographic
   up y*2.5
   right x*16/9*2.5
-  location <0,-8,0>*10
+  location <0,8,0>*10
   look_at <0,0,0>
   sky z
 }     
@@ -22,6 +22,6 @@ camera {
 background {color rgb <0,0.5,1>}
 
 light_source {
-  <0,-5,0>*1000
+  <0,5,0>*1000
   color rgb 1
 }

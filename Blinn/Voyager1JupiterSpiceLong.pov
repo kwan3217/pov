@@ -15,7 +15,7 @@
 //#declare FrameNumber=linterp(
 
 #furnsh "generic/generic.tm"
-#furnsh "Voyager/vgr2.tm"
+#furnsh "Voyager/vgr1.tm"
 
 //#declare StartCal="1986-01-24 17:59:47TDB"; //Nominal closest approach
 //#declare Cal0="1986-01-24 01:07:40TDB"; //Best fit to short Blinn start

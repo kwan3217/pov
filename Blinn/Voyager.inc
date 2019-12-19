@@ -70,34 +70,50 @@
 #declare ElAxis=vnormalize( y-z*0.055);
 #declare AzAxis=vnormalize(-z-y*0.055);
 #declare StdQ=QuatMult(AA(ElAxis,-13),AA(AzAxis,-17.5));
+#declare StdI=<StdQ.x,StdQ.y,StdQ.z,-StdQ.t>;
 #declare SpiceNullQ=QuatMult(AA(z,90),QuatMult(AA(AzAxis,90),QuatMult(AA(-ElAxis,86.7-180),StdQ)));
+#declare SpiceNullI=<SpiceNullQ.x,SpiceNullQ.y,SpiceNullQ.z,-SpiceNullQ.t>;
+#declare VoyagerScanPlatformVectors=union {
+  cylinder {0, x,0.1 pigment {color rgb <1,0,0>}}
+  cylinder {0, y,0.1 pigment {color rgb <0,1,0>}}
+  cylinder {0, z,0.1 pigment {color rgb <0,0,1>}}
+  rotate z*3
+  rotate -y*90
+//  rotate -z*18.2
+//  rotate -x*3
+  //rotate z*0.5
+//  rotate -y*90
+  QuatTrans(StdI,SPCenter)
+}
+
+
 #declare Voyager=union {
   object {VoyagerMainBus}
   union {
     object {VoyagerScanPlatform}
-    cylinder {SPCenter,SPCenter+x,0.1 pigment {color rgb <1,0,0>}}
-    cylinder {SPCenter,SPCenter+y,0.1 pigment {color rgb <0,1,0>}}
-    cylinder {SPCenter,SPCenter+z,0.1 pigment {color rgb <0,0,1>}}
-    translate -SPCenter QuatTrans(StdQ,SPCenter)
+    object {VoyagerScanPlatformVectors}
+    translate -SPCenter 
+    QuatTrans(StdQ,SPCenter)
   }
+/*
   union {
     cylinder {0,AzAxis*3,0.02 pigment {color rgb <1,1,1>}}
     cylinder {0,ElAxis*3,0.02 pigment {color rgb <1,1,1>*0.2}}
     cylinder {0,vnormalize(vcross(ElAxis,AzAxis))*3,0.02 pigment {color rgb <1,0,0.5>}}
     translate SPCenter
   } 
+*/
 }
+
 
 #macro VoyagerQ(Q) 
   union {
     object {VoyagerMainBus}
-  union {
-    object {VoyagerScanPlatform}
-    cylinder {SPCenter,SPCenter+x,0.1 pigment {color rgb <1,0,0>}}
-    cylinder {SPCenter,SPCenter+y,0.1 pigment {color rgb <0,1,0>}}
-    cylinder {SPCenter,SPCenter+z,0.1 pigment {color rgb <0,0,1>}}
-    translate -SPCenter QuatTrans(StdQ,SPCenter)
-  }
+    union {
+      object {VoyagerScanPlatform}
+      object {VoyagerScanPlatformVectors}
+      translate -SPCenter QuatTrans(StdQ,SPCenter)
+    }
   }
 #end
 
@@ -106,9 +122,7 @@
     object {VoyagerMainBus}
     union {
       object {VoyagerScanPlatform}
-      cylinder {SPCenter,SPCenter+x,0.1 pigment {color rgb <1,0,0>}}
-      cylinder {SPCenter,SPCenter+y,0.1 pigment {color rgb <0,1,0>}}
-      cylinder {SPCenter,SPCenter+z,0.1 pigment {color rgb <0,0,1>}}
+      object {VoyagerScanPlatformVectors}
       translate -SPCenter QuatTrans(QuatMult(QSpice,SpiceNullQ),SPCenter)
     }
   }
@@ -120,3 +134,5 @@
     object {VoyagerScanPlatform translate -SPCenter QuatTrans(SpiceNullQ,SPCenter)}
   }
 #end
+
+

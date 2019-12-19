@@ -13,14 +13,30 @@
 #declare NWnd=ckcov("Voyager/ck/vg2_jup_version1_type1_iss_sedr.bc",-32100,"INTERVAL",0,"TDB",100000);
 PrintNumber("NWnd: ",NWnd)
 
-#declare I=12104+frame_number;
-#declare ETScan=ckgetcov(I,0);
+#declare I=12104+293;
+#declare I0=I-5;
+#declare I1=I+5;
+#declare ET0=ckgetcov(I0,0);
+#declare ET1=ckgetcov(I1,0);
+#declare ET=Linterp(0,ET0,1,ET1,clock);
+#declare I=0;
+#while(ckgetcov(I,0)<ET) 
+  #declare I=I+1;
+#end
+#declare ETScan=ckgetcov(I-1,0);
 PrintNumber("ETScanI: ",I)
 PrintNumber(etcal(ETScan),ETScan)
+PrintNumber("ET0: ",I0)
+PrintNumber(etcal(ET0),ET0)
+PrintNumber("ET1: ",I1)
+PrintNumber(etcal(ET1),ET1)
+PrintNumber("ET: ",I)
+PrintNumber(etcal(ET),ET)
 #declare SCQ=pxform("VG2_SCAN_PLATFORM","VG2_SC_BUS",ETScan);
 //#declare SCQ=pxform("VG2_AZ_EL","VG2_SC_BUS",0);
-#declare SCQS=pxform("VG2_SLEW_PLATFORM","VG2_SC_BUS",ETScan);
+#declare SCQS=pxform("VG2_SLEW_PLATFORM","VG2_SC_BUS",ET);
 PrintQuat("Scan Platform to Spacecraft: ",SCQ)
+PrintQuat("Slew Platform to Spacecraft: ",SCQS)
 
 #include "SpiceQuat.inc"
 
